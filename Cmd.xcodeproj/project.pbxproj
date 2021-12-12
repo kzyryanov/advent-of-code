@@ -13,6 +13,8 @@
 		B5027B282763E64F00B91AF2 /* Puzzle-2021-10-input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5027B272763E64F00B91AF2 /* Puzzle-2021-10-input.swift */; };
 		B5027B2A27668E7E00B91AF2 /* Puzzle-2021-11-input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5027B2927668E7E00B91AF2 /* Puzzle-2021-11-input.swift */; };
 		B5027B2C27668E9400B91AF2 /* Puzzle-2021-11.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5027B2B27668E9400B91AF2 /* Puzzle-2021-11.swift */; };
+		B5027B2E276696FE00B91AF2 /* Puzzle-2021-12-input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5027B2D276696FE00B91AF2 /* Puzzle-2021-12-input.swift */; };
+		B5027B302766997E00B91AF2 /* Puzzle-2021-12.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5027B2F2766997E00B91AF2 /* Puzzle-2021-12.swift */; };
 		B506FD332758EA0700514D9B /* Puzzle-2021-02.swift in Sources */ = {isa = PBXBuildFile; fileRef = B506FD322758EA0700514D9B /* Puzzle-2021-02.swift */; };
 		B506FD352758EA1800514D9B /* Puzzle-2021-02-input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B506FD342758EA1800514D9B /* Puzzle-2021-02-input.swift */; };
 		B506FD37275A0CA600514D9B /* Puzzle-2021-03-input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B506FD36275A0CA600514D9B /* Puzzle-2021-03-input.swift */; };
@@ -59,6 +61,8 @@
 		B5027B272763E64F00B91AF2 /* Puzzle-2021-10-input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-10-input.swift"; sourceTree = "<group>"; };
 		B5027B2927668E7E00B91AF2 /* Puzzle-2021-11-input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-11-input.swift"; sourceTree = "<group>"; };
 		B5027B2B27668E9400B91AF2 /* Puzzle-2021-11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-11.swift"; sourceTree = "<group>"; };
+		B5027B2D276696FE00B91AF2 /* Puzzle-2021-12-input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-12-input.swift"; sourceTree = "<group>"; };
+		B5027B2F2766997E00B91AF2 /* Puzzle-2021-12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-12.swift"; sourceTree = "<group>"; };
 		B506FD322758EA0700514D9B /* Puzzle-2021-02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-02.swift"; sourceTree = "<group>"; };
 		B506FD342758EA1800514D9B /* Puzzle-2021-02-input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-02-input.swift"; sourceTree = "<group>"; };
 		B506FD36275A0CA600514D9B /* Puzzle-2021-03-input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle-2021-03-input.swift"; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				B5027B272763E64F00B91AF2 /* Puzzle-2021-10-input.swift */,
 				B5027B2927668E7E00B91AF2 /* Puzzle-2021-11-input.swift */,
 				B5027B2B27668E9400B91AF2 /* Puzzle-2021-11.swift */,
+				B5027B2D276696FE00B91AF2 /* Puzzle-2021-12-input.swift */,
+				B5027B2F2766997E00B91AF2 /* Puzzle-2021-12.swift */,
 			);
 			path = 2021;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 				B506FD40275E45F800514D9B /* Puzzle-2021-04.swift in Sources */,
 				B5ECAF12275136BC002A0EA0 /* Puzzle-2019-01.swift in Sources */,
 				B5027B192761FE5300B91AF2 /* Puzzle-2021-09-input.swift in Sources */,
+				B5027B302766997E00B91AF2 /* Puzzle-2021-12.swift in Sources */,
 				B506FD42275F51A400514D9B /* Puzzle-2021-05-input.swift in Sources */,
 				B5027B1B2761FFAC00B91AF2 /* Puzzle-2021-09.swift in Sources */,
 				B5E699E7274E77E200CB4337 /* Puzzle-2016-02.swift in Sources */,
@@ -268,6 +275,7 @@
 				B5D4C4192752CF0E00171A73 /* Puzzle-2019-02.swift in Sources */,
 				B5027B2A27668E7E00B91AF2 /* Puzzle-2021-11-input.swift in Sources */,
 				B506FD332758EA0700514D9B /* Puzzle-2021-02.swift in Sources */,
+				B5027B2E276696FE00B91AF2 /* Puzzle-2021-12-input.swift in Sources */,
 				B506FD352758EA1800514D9B /* Puzzle-2021-02-input.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
