@@ -23,7 +23,8 @@ import Foundation
 //puzzle2021_13()
 //puzzle2021_14()
 //puzzle2021_15()
-puzzle2021_16()
+//puzzle2021_16()
+puzzle2021_17()
 
 extension StringProtocol {
     subscript(offset: Int) -> Character {
