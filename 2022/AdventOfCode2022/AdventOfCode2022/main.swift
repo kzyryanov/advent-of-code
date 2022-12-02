@@ -7,4 +7,5 @@
 
 import Foundation
 
-puzzle01()
+//puzzle01()
+puzzle02()
