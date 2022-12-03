@@ -10,6 +10,10 @@
 		B5717138293A3094007C1820 /* puzzle02.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5717137293A3094007C1820 /* puzzle02.swift */; };
 		B571713A293A3171007C1820 /* input02.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5717139293A3171007C1820 /* input02.swift */; };
 		B58B7C902937631100060B22 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B7C8F2937631100060B22 /* main.swift */; };
+		B5CFC930293BE34A00B1420F /* template.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CFC92F293BE34A00B1420F /* template.swift */; };
+		B5CFC932293BE37700B1420F /* input_template.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CFC931293BE37700B1420F /* input_template.swift */; };
+		B5CFC934293BE39B00B1420F /* puzzle03.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CFC933293BE39B00B1420F /* puzzle03.swift */; };
+		B5CFC936293BE3A400B1420F /* input03.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CFC935293BE3A400B1420F /* input03.swift */; };
 		B5DE43F72938A3DF00257439 /* puzzle01.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE43F62938A3DF00257439 /* puzzle01.swift */; };
 		B5DE43FC2938A89000257439 /* input01.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE43F92938A4D200257439 /* input01.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +35,10 @@
 		B5717139293A3171007C1820 /* input02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input02.swift; sourceTree = "<group>"; };
 		B58B7C8C2937631100060B22 /* AdventOfCode2022 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2022; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58B7C8F2937631100060B22 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B5CFC92F293BE34A00B1420F /* template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = template.swift; sourceTree = "<group>"; };
+		B5CFC931293BE37700B1420F /* input_template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input_template.swift; sourceTree = "<group>"; };
+		B5CFC933293BE39B00B1420F /* puzzle03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzle03.swift; sourceTree = "<group>"; };
+		B5CFC935293BE3A400B1420F /* input03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input03.swift; sourceTree = "<group>"; };
 		B5DE43F62938A3DF00257439 /* puzzle01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzle01.swift; sourceTree = "<group>"; };
 		B5DE43F92938A4D200257439 /* input01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input01.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,11 +82,23 @@
 		B58B7C8E2937631100060B22 /* AdventOfCode2022 */ = {
 			isa = PBXGroup;
 			children = (
+				B5CFC92E293BE33200B1420F /* 03 */,
 				B5717136293A3088007C1820 /* 02 */,
 				B5DE43F82938A4C100257439 /* 01 */,
 				B58B7C8F2937631100060B22 /* main.swift */,
+				B5CFC92F293BE34A00B1420F /* template.swift */,
+				B5CFC931293BE37700B1420F /* input_template.swift */,
 			);
 			path = AdventOfCode2022;
+			sourceTree = "<group>";
+		};
+		B5CFC92E293BE33200B1420F /* 03 */ = {
+			isa = PBXGroup;
+			children = (
+				B5CFC933293BE39B00B1420F /* puzzle03.swift */,
+				B5CFC935293BE3A400B1420F /* input03.swift */,
+			);
+			path = 03;
 			sourceTree = "<group>";
 		};
 		B5DE43F82938A4C100257439 /* 01 */ = {
@@ -150,9 +170,13 @@
 			files = (
 				B5DE43F72938A3DF00257439 /* puzzle01.swift in Sources */,
 				B571713A293A3171007C1820 /* input02.swift in Sources */,
+				B5CFC936293BE3A400B1420F /* input03.swift in Sources */,
 				B5717138293A3094007C1820 /* puzzle02.swift in Sources */,
+				B5CFC932293BE37700B1420F /* input_template.swift in Sources */,
 				B58B7C902937631100060B22 /* main.swift in Sources */,
 				B5DE43FC2938A89000257439 /* input01.swift in Sources */,
+				B5CFC934293BE39B00B1420F /* puzzle03.swift in Sources */,
+				B5CFC930293BE34A00B1420F /* template.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
