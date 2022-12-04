@@ -9,4 +9,5 @@ import Foundation
 
 //puzzle01()
 //puzzle02()
-puzzle03()
+//puzzle03()
+puzzle04()
