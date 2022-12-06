@@ -11,4 +11,5 @@ import Foundation
 //puzzle02()
 //puzzle03()
 //puzzle04()
-puzzle05()
+//puzzle05()
+puzzle06()
