@@ -25,7 +25,7 @@ func puzzle05() {
 private func one(input: String) {
     let components = input.components(separatedBy: "\n\n")
     
-    var stackDescription = components[0].components(separatedBy: "\n")
+    let stackDescription = components[0].components(separatedBy: "\n")
     
     let symbols: Set<Character> = [ "[", "]", " " ]
     
@@ -79,7 +79,6 @@ private func two(input: String) {
     let components = input.components(separatedBy: "\n\n")
     
     var stackDescription = components[0].components(separatedBy: "\n")
-    let countDescription = stackDescription.removeLast()
     
     let symbols: Set<Character> = [ "[", "]", " " ]
     
