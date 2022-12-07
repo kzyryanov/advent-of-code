@@ -124,7 +124,9 @@ private class Directory {
     private(set) var directories: [Directory] = []
     private(set) var files: [File] = []
 
-    var size: Int = 0
+    var size: Int {
+        directories.map(\.size).reduce(0, +) + files.map(\.size ).reduce(0, +)
+    }
 
     init(name: String, parent: Directory?) {
         self.name = name
@@ -133,17 +135,10 @@ private class Directory {
 
     func add(file: File) {
         files.append(file)
-        size += file.size
-        var parent = parentDirectory
-        while nil != parent {
-            parent?.size += file.size
-            parent = parent?.parentDirectory
-        }
     }
 
     func add(directory: Directory) {
         directories.append(directory)
-        size += directory.size
     }
 
     func printDir() {
