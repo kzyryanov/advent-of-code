@@ -78,7 +78,7 @@ private func one(input: String) {
 private func two(input: String) {
     let components = input.components(separatedBy: "\n\n")
     
-    var stackDescription = components[0].components(separatedBy: "\n")
+    let stackDescription = components[0].components(separatedBy: "\n")
     
     let symbols: Set<Character> = [ "[", "]", " " ]
     
