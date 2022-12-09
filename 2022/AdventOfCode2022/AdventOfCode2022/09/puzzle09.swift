@@ -27,10 +27,10 @@ private func moves(input: String) -> [Move] {
         let moveDescription = $0.components(separatedBy: " ")
         let steps = Int(moveDescription.last!)!
         switch moveDescription.first! {
-        case "L": return Move.left(steps)
-        case "R": return Move.right(steps)
-        case "U": return Move.up(steps)
-        case "D": return Move.down(steps)
+        case "L": return Move(x: -steps, y: 0)
+        case "R": return Move(x: steps, y: 0)
+        case "U": return Move(x: 0, y: steps)
+        case "D": return Move(x: 0, y: -steps)
         default: fatalError("Unknown move")
         }
     }
@@ -53,51 +53,35 @@ private func solve(input: String, knotsCount: Int) {
 
     var tailPositions: Set<Position> = [knots.last!]
 
+    func sign(_ a: Int) -> Int {
+        guard abs(a) > 0 else {
+            return 0
+        }
+        return a / abs(a)
+    }
+
     moves.forEach { move in
-        switch move {
-        case .left(let steps):
-            for _ in 1...steps {
-                knots[0].x -= 1
-                for i in 1..<knots.count {
-                    knots[i] = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
-                }
-                tailPositions.insert(knots.last!)
+        let signX = sign(move.x)
+        let signY = sign(move.y)
+
+        let steps = max(abs(move.x), abs(move.y))
+
+        for _ in 1...steps {
+            knots[0].x += signX
+            knots[0].y += signY
+            for i in 1..<knots.count {
+                knots[i] = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
             }
-        case .right(let steps):
-            for _ in 1...steps {
-                knots[0].x += 1
-                for i in 1..<knots.count {
-                    knots[i] = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
-                }
-                tailPositions.insert(knots.last!)
-            }
-        case .up(let steps):
-            for _ in 1...steps {
-                knots[0].y += 1
-                for i in 1..<knots.count {
-                    knots[i] = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
-                }
-                tailPositions.insert(knots.last!)
-            }
-        case .down(let steps):
-            for _ in 1...steps {
-                knots[0].y -= 1
-                for i in 1..<knots.count {
-                    knots[i] = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
-                }
-                tailPositions.insert(knots.last!)
-            }
+            tailPositions.insert(knots.last!)
         }
     }
 
     print(tailPositions.count)
 }
 
-private enum Move {
-    case left(Int)
-    case right(Int)
-    case up(Int)
-    case down(Int)
+private struct Move {
+    let x: Int
+    let y: Int
 }
 
 private struct Position: Hashable, CustomStringConvertible {
