@@ -158,8 +158,7 @@
 				B5A46FDF2943311B0020B482 /* input09.swift */,
 				B5A46FE02943311B0020B482 /* puzzle09.swift */,
 			);
-			name = 09;
-			path = "New Group";
+			path = 09;
 			sourceTree = "<group>";
 		};
 		B5CFC92E293BE33200B1420F /* 03 */ = {
