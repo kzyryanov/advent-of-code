@@ -70,7 +70,11 @@ private func solve(input: String, knotsCount: Int) {
             knots[0].x += signX
             knots[0].y += signY
             for i in 1..<knots.count {
-                knots[i] = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
+                let newPosition = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
+                if newPosition == knots[i] {
+                    break
+                }
+                knots[i] = newPosition
             }
             tailPositions.insert(knots.last!)
         }
