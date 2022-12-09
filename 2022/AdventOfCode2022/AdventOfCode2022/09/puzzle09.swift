@@ -70,11 +70,12 @@ private func solve(input: String, knotsCount: Int) {
             knots[0].x += signX
             knots[0].y += signY
             for i in 1..<knots.count {
-                let newPosition = moveTail(headPosition: knots[i-1], tailPosition: knots[i])
-                if newPosition == knots[i] {
+                let head = knots[i-1]
+                let tail = knots[i]
+                if head.touches(tail) {
                     break
                 }
-                knots[i] = newPosition
+                knots[i] = moveTail(headPosition: head, tailPosition: tail)
             }
             tailPositions.insert(knots.last!)
         }
@@ -97,13 +98,13 @@ private struct Position: Hashable, CustomStringConvertible {
     var description: String {
         "(\(x), \(y))"
     }
+
+    func touches(_ other: Position) -> Bool {
+        abs(x - other.x) <= 1 && abs(y - other.y) <= 1
+    }
 }
 
 private func moveTail(headPosition: Position, tailPosition: Position) -> Position {
-    guard abs(headPosition.x - tailPosition.x) > 1 || abs(headPosition.y - tailPosition.y) > 1 else {
-        return tailPosition
-    }
-
     func sign(_ a: Int, _ b: Int) -> Int {
         guard abs(a - b) > 0 else {
             return 0
