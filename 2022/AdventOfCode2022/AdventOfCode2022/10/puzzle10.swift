@@ -75,7 +75,7 @@ private func two(input: String) {
     func cycle() {
         let line = currentCycle / 40
         let drawAt = currentCycle % 40
-        lines[line][drawAt] = abs(x - drawAt) > 1 ? "." : "#"
+        lines[line][drawAt] = abs(x - drawAt) > 1 ? " " : "#"
         currentCycle += 1
     }
 
