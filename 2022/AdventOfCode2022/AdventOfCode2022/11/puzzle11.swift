@@ -111,11 +111,11 @@ private func two(input: String) {
                 let newWorryLevel = monkey.operation(item)
                 monkey.inspectedItemsCount += 1
                 let worryLevelRest = newWorryLevel % monkey.test
-                let newWorryLevelWhileRest = newWorryLevel % monkeyWholeTest
+                let newWorryLevelWholeRest = newWorryLevel % monkeyWholeTest
                 if worryLevelRest == 0 {
-                    monkeys[monkey.trueMonkey].items.append(newWorryLevelWhileRest)
+                    monkeys[monkey.trueMonkey].items.append(newWorryLevelWholeRest)
                 } else {
-                    monkeys[monkey.falseMonkey].items.append(newWorryLevelWhileRest)
+                    monkeys[monkey.falseMonkey].items.append(newWorryLevelWholeRest)
                 }
             }
         }
