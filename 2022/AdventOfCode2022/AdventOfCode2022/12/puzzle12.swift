@@ -142,7 +142,10 @@ private func two(input: String) {
             }
 
             let destinationElement = grid[destination.row][destination.column]
-            if destinationElement == "a" || destinationElement == "b" {
+            if destinationElement == "a" {
+                return nil
+            }
+            if destinationElement == "b" {
                 return destination
             }
 
@@ -158,23 +161,23 @@ private func two(input: String) {
 
             let currentPosition = possibleDestinations.removeFirst()
 
-            let newPossibleDestinations = Set(destinationDiffs.compactMap { diff -> Position? in
+            for diff in destinationDiffs {
                 let destination = Position(
                     row: currentPosition.row + diff.row,
                     column: currentPosition.column + diff.column
                 )
 
-                if checkDestination(currentPosition: currentPosition, destination: destination, grid: grid) {
+                if checkDestination(
+                    currentPosition: currentPosition,
+                    destination: destination,
+                    grid: grid
+                ) {
                     if steps[destination.row][destination.column] > steps[currentPosition.row][currentPosition.column] + 1 {
                         steps[destination.row][destination.column] = steps[currentPosition.row][currentPosition.column] + 1
-                        return destination
+                        possibleDestinations.insert(destination)
                     }
                 }
-
-                return nil
-            })
-
-            possibleDestinations = possibleDestinations.union(newPossibleDestinations)
+            }
         }
 
         return steps[endPosition.row][endPosition.column]
@@ -187,7 +190,11 @@ private func two(input: String) {
     print("Result: \(result)")
 }
 
-private func checkDestination(currentPosition: Position, destination: Position, grid: [[Character]]) -> Bool {
+private func checkDestination(
+    currentPosition: Position,
+    destination: Position,
+    grid: [[Character]]
+) -> Bool {
     guard grid.indices.contains(destination.row),
           grid[destination.row].indices.contains(destination.column) else {
         return false // Outside of the grid
