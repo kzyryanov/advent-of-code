@@ -19,6 +19,7 @@ let start = CFAbsoluteTimeGetCurrent()
 //puzzle09()
 //puzzle10()
 //puzzle11()
-puzzle12()
+//puzzle12()
+puzzle13()
 let diff = CFAbsoluteTimeGetCurrent() - start
 print("\nTook \(diff) seconds")
