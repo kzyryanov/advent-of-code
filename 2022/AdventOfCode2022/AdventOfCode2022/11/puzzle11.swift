@@ -7,8 +7,6 @@
 
 import Foundation
 
-import BigInt
-
 func puzzle11() {
     print("Test")
     print("One")
