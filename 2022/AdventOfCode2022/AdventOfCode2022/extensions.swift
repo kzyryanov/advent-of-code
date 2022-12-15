@@ -20,3 +20,24 @@ extension Collection {
         !isEmpty
     }
 }
+
+extension ClosedRange {
+    func embraces(_ other: Self) -> Bool {
+        return other.clamped(to: self) == other
+    }
+
+    func intersection(_ other: Self) -> ClosedRange? {
+        if lowerBound > other.upperBound || other.lowerBound > upperBound {
+            return nil
+        }
+
+        return Swift.max(lowerBound, other.lowerBound)...Swift.min(upperBound, other.upperBound)
+    }
+
+    func union(_ other: Self) -> ClosedRange? {
+        guard nil != intersection(other) else {
+            return nil
+        }
+        return Swift.min(self.lowerBound, other.lowerBound)...Swift.max(self.upperBound, other.upperBound)
+    }
+}

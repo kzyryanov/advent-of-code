@@ -48,37 +48,3 @@ private func two(input: String) {
 
     print(result.count)
 }
-
-private extension ClosedRange {
-    func embraces(_ other: Self) -> Bool {
-        return other.clamped(to: self) == other
-    }
-}
-
-private extension ClosedRange {
-    func intersection(_ other: Self) -> ClosedRange? {
-        var lowerBound: Bound?
-        var upperBound: Bound?
-
-        if self.contains(other.lowerBound) {
-            lowerBound = other.lowerBound
-        }
-
-        if self.contains(other.upperBound) {
-            upperBound = other.upperBound
-        }
-
-        if other.contains(self.lowerBound) {
-            lowerBound = self.lowerBound
-        }
-
-        if other.contains(self.upperBound) {
-            upperBound = self.upperBound
-        }
-
-        guard let lowerBound, let upperBound else {
-            return nil
-        }
-        return lowerBound...upperBound
-    }
-}
