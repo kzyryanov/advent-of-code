@@ -183,7 +183,7 @@ private func solve(input: String, rocksCount: Int) {
                             let towerHeight = minTowerDiff + towerHeightDiff * patternsCount
                             maxHeights = pattern.enumerated().map { (index, patternHeight) in
                                 let height = towerHeight + patternHeight
-                                rockMap[Coordinate(x: index, y: height)] = true
+                                rockMap[Coordinate(x: index, y: height - 1)] = true
                                 return height
                             }
                             let testPattern = maxHeights.map { $0 - towerHeight }
