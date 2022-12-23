@@ -85,13 +85,18 @@ private struct Coordinate: Hashable, CustomStringConvertible {
         Coordinate(x: x + coordinate.x, y: y + coordinate.y)
     }
 }
-private func one(input: String) {
-    solve(input: input, rocksCount: 2022)
-}
 
 private struct PatternKey: Hashable {
     let jet: Int
     let pattern: [Int]
+}
+
+private func jetOffset(_ jet: Character) -> Coordinate {
+    switch jet {
+    case "<": return Coordinate(x: -1, y: 0)
+    case ">": return Coordinate(x: 1, y: 0)
+    default: return Coordinate.zero
+    }
 }
 
 private func solve(input: String, rocksCount: Int) {
@@ -205,12 +210,8 @@ private func solve(input: String, rocksCount: Int) {
     print("Result: \(result)")
 }
 
-private func jetOffset(_ jet: Character) -> Coordinate {
-    switch jet {
-    case "<": return Coordinate(x: -1, y: 0)
-    case ">": return Coordinate(x: 1, y: 0)
-    default: return Coordinate.zero
-    }
+private func one(input: String) {
+    solve(input: input, rocksCount: 2022)
 }
 
 private func two(input: String) {
