@@ -332,7 +332,7 @@ private func two(input: String) {
 
     var clusters: [Set<Side>] = []
 
-    var clusterSides = sides
+    let clusterSides = sides
     var visited: Set<Side> = []
 
     func findClusters(side: Side) -> Set<Side> {
@@ -343,7 +343,7 @@ private func two(input: String) {
         visited.insert(side)
 
         let adjacentSides = side.adjacent
-        var adjacentFigureSides = clusterSides.intersection(adjacentSides)
+        let adjacentFigureSides = clusterSides.intersection(adjacentSides)
 
         var intersection: Set<Side> = []
 
