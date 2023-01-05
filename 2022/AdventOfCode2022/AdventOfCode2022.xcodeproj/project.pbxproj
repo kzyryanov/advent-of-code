@@ -44,6 +44,8 @@
 		B59437402966CEF200AAA499 /* input23.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594373E2966CEB800AAA499 /* input23.swift */; };
 		B59437442967015800AAA499 /* input24.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59437422966FA4B00AAA499 /* input24.swift */; };
 		B59437452967015800AAA499 /* puzzle24.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59437432966FA4B00AAA499 /* puzzle24.swift */; };
+		B59437492967724400AAA499 /* input25.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59437472967722300AAA499 /* input25.swift */; };
+		B594374A2967724400AAA499 /* puzzle25.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59437482967722300AAA499 /* puzzle25.swift */; };
 		B5A46FDC2941DDD60020B482 /* input08.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A46FDA2941DDD60020B482 /* input08.swift */; };
 		B5A46FDD2941DDD60020B482 /* puzzle08.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A46FDB2941DDD60020B482 /* puzzle08.swift */; };
 		B5A46FE12943311B0020B482 /* input09.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A46FDF2943311B0020B482 /* input09.swift */; };
@@ -112,6 +114,8 @@
 		B594373E2966CEB800AAA499 /* input23.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input23.swift; sourceTree = "<group>"; };
 		B59437422966FA4B00AAA499 /* input24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input24.swift; sourceTree = "<group>"; };
 		B59437432966FA4B00AAA499 /* puzzle24.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzle24.swift; sourceTree = "<group>"; };
+		B59437472967722300AAA499 /* input25.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input25.swift; sourceTree = "<group>"; };
+		B59437482967722300AAA499 /* puzzle25.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzle25.swift; sourceTree = "<group>"; };
 		B5A46FDA2941DDD60020B482 /* input08.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = input08.swift; sourceTree = "<group>"; };
 		B5A46FDB2941DDD60020B482 /* puzzle08.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = puzzle08.swift; sourceTree = "<group>"; };
 		B5A46FDF2943311B0020B482 /* input09.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = input09.swift; path = AdventOfCode2022/09/input09.swift; sourceTree = SOURCE_ROOT; };
@@ -294,6 +298,7 @@
 		B58B7C8E2937631100060B22 /* AdventOfCode2022 */ = {
 			isa = PBXGroup;
 			children = (
+				B59437462967721A00AAA499 /* 25 */,
 				B59437412966FA4000AAA499 /* 24 */,
 				B594373C2966CEB100AAA499 /* 23 */,
 				B59437352965741B00AAA499 /* 22 */,
@@ -351,6 +356,15 @@
 				B59437422966FA4B00AAA499 /* input24.swift */,
 			);
 			path = 24;
+			sourceTree = "<group>";
+		};
+		B59437462967721A00AAA499 /* 25 */ = {
+			isa = PBXGroup;
+			children = (
+				B59437482967722300AAA499 /* puzzle25.swift */,
+				B59437472967722300AAA499 /* input25.swift */,
+			);
+			path = 25;
 			sourceTree = "<group>";
 		};
 		B5A46FD92941DDC10020B482 /* 08 */ = {
@@ -479,6 +493,7 @@
 				B5A46FDD2941DDD60020B482 /* puzzle08.swift in Sources */,
 				B50E617E294A6E22003AC04A /* input14.swift in Sources */,
 				B50E6184294B280C003AC04A /* puzzle15.swift in Sources */,
+				B59437492967724400AAA499 /* input25.swift in Sources */,
 				B51AEC652955DF7000289F7A /* puzzle18.swift in Sources */,
 				B5CFC940293DE73F00B1420F /* input05.swift in Sources */,
 				B51AEC642955DF7000289F7A /* input18.swift in Sources */,
@@ -488,6 +503,7 @@
 				B5717138293A3094007C1820 /* puzzle02.swift in Sources */,
 				B5CFC932293BE37700B1420F /* input_template.swift in Sources */,
 				B51AEC74295BA31E00289F7A /* puzzle21.swift in Sources */,
+				B594374A2967724400AAA499 /* puzzle25.swift in Sources */,
 				B55141CF293F39C7006F2114 /* puzzle06.swift in Sources */,
 				B5CFC93B293CE73100B1420F /* input04.swift in Sources */,
 				B56B9BF129486CE6001749D9 /* input13.swift in Sources */,
