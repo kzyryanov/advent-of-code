@@ -50,8 +50,9 @@ private enum Direction: Character, CaseIterable, CustomStringConvertible {
 }
 
 private struct MinuteState: Hashable {
-    let blizzards: [Coordinate: [Direction]]
+//    let blizzards: [Coordinate: [Direction]]
     let expedition: Coordinate
+    let waitCount: Int
 }
 
 private func parseMap(input: String) -> (walls: [Coordinate: Bool], blizzards: [Coordinate: [Direction]]) {
@@ -73,7 +74,7 @@ private func parseMap(input: String) -> (walls: [Coordinate: Bool], blizzards: [
     return (walls, blizzards)
 }
 
-private func printState(walls: [Coordinate: Bool], _ state: MinuteState) {
+private func printState(walls: [Coordinate: Bool], blizzards: [Coordinate: [Direction]], state: MinuteState) {
     let maxX = walls.keys.map(\.x).max()!
     let maxY = walls.keys.map(\.y).max()!
 
@@ -82,7 +83,7 @@ private func printState(walls: [Coordinate: Bool], _ state: MinuteState) {
             let coordinate = Coordinate(x: x, y: y)
             if walls[coordinate, default: false] {
                 print("#", terminator: "")
-            } else if let blizzards = state.blizzards[coordinate] {
+            } else if let blizzards = blizzards[coordinate] {
                 if blizzards.count > 1 {
                     print(blizzards.count, terminator: "")
                 } else if let blizzard = blizzards.first {
@@ -108,28 +109,26 @@ private func one(input: String) {
 
     let result = solve(
         walls: map.walls,
-        initialStates: [MinuteState(blizzards: map.blizzards, expedition: startLocation)],
+        blizzards: map.blizzards,
         startLocation: startLocation,
         destination: destination
     )
 
-    print("Result: \(result.minutes), \(result.states.count)")
+    print("Result: \(result.minutes)")
 }
 
 private func solve(
     walls: [Coordinate: Bool],
-    initialStates: Set<MinuteState>,
+    blizzards: [Coordinate: [Direction]],
     startLocation: Coordinate,
     destination: Coordinate
-) -> (states: Set<MinuteState>, minutes: Int) {
-    var blizzards = initialStates.first!.blizzards
+) -> (blizzards: [Coordinate: [Direction]], minutes: Int) {
+    var blizzards = blizzards
     let maxX = walls.keys.map(\.x).max()!
     let maxY = walls.keys.map(\.y).max()!
 
-    var states: Set<MinuteState> = initialStates
+    var states: Set<MinuteState> = [MinuteState(expedition: startLocation, waitCount: 0)]
     var minute: Int = 0
-
-    var historicalStates: Set<MinuteState> = initialStates
 
     while states.isNotEmpty {
         let expeditionLocations = Set(states.map(\.expedition))
@@ -139,7 +138,7 @@ private func solve(
         let maxEY = expeditionLocations.map(\.y).max()!
         print("Locations \(minEX)/\(maxEX)/\(destination.x), \(minEY)/\(maxEY)/\(destination.y)")
         if expeditionLocations.contains(destination) {
-            return (states.filter({ $0.expedition == destination }), minute)
+            return (blizzards, minute)
         }
         print("Minute \(minute + 1)")
         var newStates: Set<MinuteState> = []
@@ -170,6 +169,11 @@ private func solve(
         }
         blizzards = newBlizzards
 
+        // Filter states
+
+        states = states.filter { $0.waitCount < 2 }
+        print("States to count", states.count)
+
         states.forEach { state in
             // Move expedition
 
@@ -187,27 +191,18 @@ private func solve(
             for possibleDirection in Direction.allCases {
                 let newExpeditionLocation = state.expedition + possibleDirection.coordinateOffset
                 if checkExpeditionLocation(newExpeditionLocation) {
-                    let newState = MinuteState(blizzards: blizzards, expedition: newExpeditionLocation)
-                    if !historicalStates.contains(newState) {
-                        newStates.insert(newState)
-                        historicalStates.insert(newState)
-                    }
+                    let newState = MinuteState(expedition: newExpeditionLocation, waitCount: 0)
+                    newStates.insert(newState)
                 }
             }
             // Check wait
             if checkExpeditionLocation(state.expedition) {
-                let newState = MinuteState(blizzards: blizzards, expedition: state.expedition)
-                if !historicalStates.contains(newState) {
-                    newStates.insert(newState)
-                    historicalStates.insert(newState)
-                }
+                let newState = MinuteState(expedition: state.expedition, waitCount: state.waitCount + 1)
+                newStates.insert(newState)
             }
         }
         states = newStates
         print("Number of states \(states.count)")
-//        for state in states {
-//            printState(walls: walls, state)
-//        }
         minute += 1
     }
 
@@ -224,21 +219,21 @@ private func two(input: String) {
 
     let resultThere = solve(
         walls: map.walls,
-        initialStates: [MinuteState(blizzards: map.blizzards, expedition: startLocation)],
+        blizzards: map.blizzards,
         startLocation: startLocation,
         destination: destination
     )
 
     let resultBack = solve(
         walls: map.walls,
-        initialStates: resultThere.states,
+        blizzards: resultThere.blizzards,
         startLocation: destination,
         destination: startLocation
     )
 
     let result = solve(
         walls: map.walls,
-        initialStates: resultBack.states,
+        blizzards: resultBack.blizzards,
         startLocation: startLocation,
         destination: destination
     )
