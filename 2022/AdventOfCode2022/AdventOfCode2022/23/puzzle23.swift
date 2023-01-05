@@ -179,8 +179,6 @@ private func one(input: String) {
 
 private func two(input: String) {
     var elvesMap = parseElves(input: input)
-    let initialElvesCount = elvesMap.filter { $0.value }.keys.count
-
 
     var round = 0
     var hasMoved = true
