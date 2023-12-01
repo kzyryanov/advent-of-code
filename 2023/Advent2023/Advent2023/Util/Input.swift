@@ -1,0 +1,36 @@
+//
+//  Input.swift
+//  Advent2023
+//
+//  Created by Konstantin Zyrianov on 2023-12-01.
+//
+
+import Foundation
+import UIKit
+
+enum Input: String {
+    case puzzle01
+
+    var input: String {
+        NSDataAsset(name: name).map {
+            String(decoding: $0.data, as: UTF8.self)
+        } ?? ""
+    }
+
+    var testInput: String {
+        NSDataAsset(name: testName).map {
+            String(decoding: $0.data, as: UTF8.self)
+        } ?? ""
+    }
+
+    func testInput(number: Int) -> String {
+        NSDataAsset(name: testName(number: number)).map {
+            String(decoding: $0.data, as: UTF8.self)
+        } ?? ""
+    }
+
+    var name: String { rawValue }
+    var testName: String { "\(rawValue)_test" }
+    func testName(number: Int) -> String { "\(rawValue)_test\(number)" }
+
+}
