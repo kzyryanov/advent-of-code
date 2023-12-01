@@ -29,11 +29,12 @@ struct Puzzle01: View {
                         Text("\(answerSecond)")
                     }
                 }
+                .padding()
             }
             Button(
                 action: {
                     Task {
-//                        await solveFirst()
+                        await solveFirst()
                         await solveSecond()
                     }
                 },
@@ -44,6 +45,7 @@ struct Puzzle01: View {
             )
             .font(.largeTitle)
             .disabled(isSolving)
+            .padding()
         }
         .overlay {
             if isSolving {
@@ -51,7 +53,6 @@ struct Puzzle01: View {
             }
         }
         .navigationTitle("Puzzle 01")
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button(
                 action: { presentInput.toggle() },
@@ -65,10 +66,9 @@ struct Puzzle01: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                         .navigationTitle("Input")
-                        .navigationBarTitleDisplayMode(.inline)
                 }
                 .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
+                    ToolbarItem(placement: .principal) {
                         Button(
                             action: { presentInput.toggle() },
                             label: { Image(systemName: "xmark.circle") }
@@ -130,7 +130,7 @@ struct Puzzle01: View {
                 return 0
             }
             let numberStirng = "\(first)\(last)"
-            print(numberStirng)
+
             guard let number = Int(numberStirng) else {
                 assertionFailure("Cannot find number")
                 return 0

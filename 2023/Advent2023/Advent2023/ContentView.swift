@@ -31,11 +31,12 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            ForEach(Puzzle.allCases, id: \.self) { puzzle in
+            List(Puzzle.allCases, id: \.self) { puzzle in
                 NavigationLink(value: puzzle, label: {
                     Text(puzzle.name)
                 })
             }
+            .navigationTitle("Advent of Code 2023")
             .navigationDestination(for: Puzzle.self) { puzzle in
                 puzzle.body
             }
