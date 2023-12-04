@@ -7,21 +7,28 @@
 
 import SwiftUI
 
-enum Puzzle: CaseIterable {
-    case puzzle01
+enum Puzzle: String, CaseIterable {
+    case puzzle01 = "Puzzle 01"
+    case puzzle02 = "Puzzle 02"
+    case puzzle03 = "Puzzle 03"
 
-    var name: String {
-        switch self {
-        case .puzzle01:
-            return "Puzzle 01"
-        }
-    }
+    var name: String { rawValue }
 
     @ViewBuilder
     var body: some View {
         switch self {
         case .puzzle01:
             Puzzle01(input: Input.puzzle01.input)
+                .navigationTitle(self.name)
+        case .puzzle02:
+            Puzzle02(
+                input: Input.puzzle02.input,
+                bag: Bag(red: 12, green: 13, blue: 14)
+            )
+            .navigationTitle(self.name)
+        case .puzzle03:
+            Puzzle03(input: Input.puzzle03.input)
+                .navigationTitle(self.name)
         }
     }
 }

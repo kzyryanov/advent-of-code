@@ -14,6 +14,8 @@ import AppKit
 
 enum Input: String {
     case puzzle01
+    case puzzle02
+    case puzzle03
 
     var input: String {
         NSDataAsset(name: name).map {

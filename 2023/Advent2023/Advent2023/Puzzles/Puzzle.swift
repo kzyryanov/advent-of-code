@@ -1,13 +1,13 @@
 //
-//  Puzzle01.swift
+//  Puzzle.swift
 //  Advent2023
 //
-//  Created by Konstantin Zyrianov on 2023-12-01.
+//  Created by Konstantin Zyrianov on 2023-12-04.
 //
 
 import SwiftUI
 
-struct Puzzle01: View {
+struct PuzzleView: View {
     let input: String
 
     @State private var presentInput: Bool = false
@@ -85,19 +85,7 @@ struct Puzzle01: View {
             isSolving = false
         }
 
-        let result = input.components(separatedBy: "\n").filter(\.isNotEmpty).map { line in
-            let numbers = line.filter { $0.isNumber }
-            guard let first = numbers.first, let last = numbers.last else {
-                assertionFailure("No numbers")
-                return 0
-            }
-            let numberStirng = "\(first)\(last)"
-            guard let number = Int(numberStirng) else {
-                assertionFailure("Cannot find number")
-                return 0
-            }
-            return number
-        }.reduce(0, +)
+        let result = 0
 
         await MainActor.run {
             answerFirst = result
@@ -111,31 +99,7 @@ struct Puzzle01: View {
             isSolving = false
         }
 
-        let result = input.components(separatedBy: "\n").filter(\.isNotEmpty).map { line in
-            let numbers = Numbers.allCases
-                .compactMap { number in
-                    line.indicesOf(string: number.rawValue).map({
-                        (number: number.number, index: $0)
-                    })
-                }
-                .flatMap({ $0 })
-                .sorted { left, right in
-                    left.index < right.index
-                }
-                .map(\.number)
-
-            guard let first = numbers.first, let last = numbers.last else {
-                assertionFailure("No numbers")
-                return 0
-            }
-            let numberStirng = "\(first)\(last)"
-
-            guard let number = Int(numberStirng) else {
-                assertionFailure("Cannot find number")
-                return 0
-            }
-            return number
-        }.reduce(0, +)
+        let result = 0
 
         await MainActor.run {
             answerSecond = result
@@ -143,44 +107,6 @@ struct Puzzle01: View {
     }
 }
 
-private enum Numbers: String, CaseIterable {
-    case one, two, three, four, five, six, seven, eight, nine
-    case oneDigit = "1"
-    case twoDigit = "2"
-    case threeDigit = "3"
-    case fourDigit = "4"
-    case fiveDigit = "5"
-    case sixDigit = "6"
-    case sevenDigit = "7"
-    case eightDigit = "8"
-    case nineDigit = "9"
-
-    var number: Int {
-        switch self {
-        case .one, .oneDigit:
-            return 1
-        case .two, .twoDigit:
-            return 2
-        case .three, .threeDigit:
-            return 3
-        case .four, .fourDigit:
-            return 4
-        case .five, .fiveDigit:
-            return 5
-        case .six, .sixDigit:
-            return 6
-        case .seven, .sevenDigit:
-            return 7
-        case .eight, .eightDigit:
-            return 8
-        case .nine, .nineDigit:
-            return 9
-        }
-    }
-}
-
 #Preview {
-    NavigationView {
-        Puzzle01(input: Input.puzzle01.testInput(number: 1))
-    }
+    PuzzleView(input: "")
 }

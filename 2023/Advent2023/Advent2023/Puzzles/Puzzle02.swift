@@ -1,14 +1,15 @@
 //
-//  Puzzle01.swift
+//  Puzzle02.swift
 //  Advent2023
 //
-//  Created by Konstantin Zyrianov on 2023-12-01.
+//  Created by Konstantin Zyrianov on 2023-12-04.
 //
 
 import SwiftUI
 
-struct Puzzle01: View {
+struct Puzzle02: View {
     let input: String
+    let bag: Bag
 
     @State private var presentInput: Bool = false
 
@@ -85,19 +86,10 @@ struct Puzzle01: View {
             isSolving = false
         }
 
-        let result = input.components(separatedBy: "\n").filter(\.isNotEmpty).map { line in
-            let numbers = line.filter { $0.isNumber }
-            guard let first = numbers.first, let last = numbers.last else {
-                assertionFailure("No numbers")
-                return 0
-            }
-            let numberStirng = "\(first)\(last)"
-            guard let number = Int(numberStirng) else {
-                assertionFailure("Cannot find number")
-                return 0
-            }
-            return number
-        }.reduce(0, +)
+        let result = parse()
+            .filter({ $0.possible(in: bag) })
+            .map(\.id)
+            .reduce(0, +)
 
         await MainActor.run {
             answerFirst = result
@@ -111,76 +103,84 @@ struct Puzzle01: View {
             isSolving = false
         }
 
-        let result = input.components(separatedBy: "\n").filter(\.isNotEmpty).map { line in
-            let numbers = Numbers.allCases
-                .compactMap { number in
-                    line.indicesOf(string: number.rawValue).map({
-                        (number: number.number, index: $0)
-                    })
+        let result = parse()
+            .map { game in
+                let maxBag = game.sets.reduce(Bag(red: 0, green: 0, blue: 0)) { partialResult, set in
+                    Bag(
+                        red: max(partialResult.red, set.red),
+                        green: max(partialResult.green, set.green),
+                        blue: max(partialResult.blue, set.blue)
+                    )
                 }
-                .flatMap({ $0 })
-                .sorted { left, right in
-                    left.index < right.index
-                }
-                .map(\.number)
-
-            guard let first = numbers.first, let last = numbers.last else {
-                assertionFailure("No numbers")
-                return 0
+                return maxBag.red * maxBag.green * maxBag.blue
             }
-            let numberStirng = "\(first)\(last)"
-
-            guard let number = Int(numberStirng) else {
-                assertionFailure("Cannot find number")
-                return 0
-            }
-            return number
-        }.reduce(0, +)
+            .reduce(0, +)
 
         await MainActor.run {
             answerSecond = result
         }
     }
+
+    private func parse() -> [Game] {
+        input.components(separatedBy: "\n").filter(\.isNotEmpty).map { line in
+            let gameComponents = line.components(separatedBy: ": ")
+            let gameId = Int(gameComponents.first!.components(separatedBy: " ").last!)!
+            let setsStrings = gameComponents.last!.components(separatedBy: "; ")
+            let sets = setsStrings.map { setString in
+                let colors = setString.components(separatedBy: ", ")
+                let colorsDict = Dictionary(uniqueKeysWithValues: colors.map { colorString in
+                    let components = colorString.components(separatedBy: " ")
+                    let number = Int(components.first!)!
+                    let color =  components.last!
+                    return (color, number)
+                })
+
+                return Bag(
+                    red: colorsDict["red", default: 0],
+                    green: colorsDict["green", default: 0],
+                    blue: colorsDict["blue", default: 0]
+                )
+            }
+
+            let game = Game(id: gameId, sets: sets)
+            return game
+        }
+    }
 }
 
-private enum Numbers: String, CaseIterable {
-    case one, two, three, four, five, six, seven, eight, nine
-    case oneDigit = "1"
-    case twoDigit = "2"
-    case threeDigit = "3"
-    case fourDigit = "4"
-    case fiveDigit = "5"
-    case sixDigit = "6"
-    case sevenDigit = "7"
-    case eightDigit = "8"
-    case nineDigit = "9"
+struct Bag: CustomStringConvertible {
+    let red: Int
+    let green: Int
+    let blue: Int
 
-    var number: Int {
-        switch self {
-        case .one, .oneDigit:
-            return 1
-        case .two, .twoDigit:
-            return 2
-        case .three, .threeDigit:
-            return 3
-        case .four, .fourDigit:
-            return 4
-        case .five, .fiveDigit:
-            return 5
-        case .six, .sixDigit:
-            return 6
-        case .seven, .sevenDigit:
-            return 7
-        case .eight, .eightDigit:
-            return 8
-        case .nine, .nineDigit:
-            return 9
+    var description: String {
+        "[red: \(red), green: \(green), blue: \(blue)]"
+    }
+}
+
+private struct Game: CustomStringConvertible {
+    let id: Int
+    let sets: [Bag]
+
+    var description: String {
+        "Game \(id): \(sets)"
+    }
+
+    func possible(in bag: Bag) -> Bool {
+        for set in sets {
+            if set.red > bag.red || set.green > bag.green || set.blue > bag.blue {
+                return false
+            }
         }
+        return true
     }
 }
 
 #Preview {
     NavigationView {
-        Puzzle01(input: Input.puzzle01.testInput(number: 1))
+        Puzzle02(
+            input: Input.puzzle02.testInput,
+            bag: Bag(red: 12, green: 13, blue: 14)
+        )
     }
 }
