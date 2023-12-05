@@ -193,15 +193,10 @@ struct Puzzle05: View {
             }
         }
 
-        print(seeds)
-//        print(map)
-
         var convertedSeeds: [ClosedRange<Int>] = seeds
 
         MapKey.allCases.forEach { key in
             let mappings = map[key, default: []]
-            print(key, mappings)
-            print(convertedSeeds)
             convertedSeeds = convertedSeeds.flatMap { seedsRange in
                 var splits: [ClosedRange<Int>] = []
 
@@ -235,51 +230,20 @@ struct Puzzle05: View {
                     }
                     return split
                 }
-
-                print("======")
-                print("Range     ", seedsRange)
-                print("Splits    ", totalSplits)
-                print("Converted ", convertedSplits)
-                print("======")
-
                 return convertedSplits
-
-//                var splits: [ClosedRange<Int>] = []
-//                var restSeedsRange = seedsRange
-//                for mapping in mappings {
-//                    guard let intersection = mapping.sourceRange.intersection(restSeedsRange) else {
-//                        continue
-//                    }
-//                    if intersection == restSeedsRange {
-//                        splits.append(restSeedsRange)
-//                    }
-//                    if intersection == mapping.sourceRange {
-//                        if intersection.lowerBound == restSeedsRange.lowerBound {
-//
-//                        }
-//                    }
-//                }
-//                return splits
             }
             .sorted(by: { $0.lowerBound < $1.lowerBound })
+
+            var mergedSeeds: [ClosedRange<Int>] = []
+            convertedSeeds.forEach { range in
+                if let last = mergedSeeds.last, range.lowerBound - last.upperBound == 1 {
+                    mergedSeeds[mergedSeeds.count-1] = last.lowerBound...range.upperBound
+                } else {
+                    mergedSeeds.append(range)
+                }
+            }
+            convertedSeeds = mergedSeeds
         }
-
-        print(convertedSeeds)
-
-//        var convertedSeeds: [Int] = seeds
-//
-//        MapKey.allCases.forEach { key in
-//            let mappings = map[key, default: []]
-//            convertedSeeds = convertedSeeds.map({ value in
-//                for mapping in mappings {
-//                    let conversion = mapping.convert(value)
-//                    if conversion.converted {
-//                        return conversion.newValue
-//                    }
-//                }
-//                return value
-//            })
-//        }
 
         let result = convertedSeeds.first!.lowerBound
 

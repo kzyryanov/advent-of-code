@@ -130,7 +130,6 @@ struct Puzzle04: View {
         }
 
         let amounts = cards.map({ card in card.w.intersection(card.h).count })
-        print(amounts)
 
         var cardCount = Array(repeating: 1, count: amounts.count)
 
