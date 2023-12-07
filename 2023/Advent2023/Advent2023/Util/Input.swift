@@ -18,6 +18,7 @@ enum Input: String {
     case puzzle03
     case puzzle04
     case puzzle05
+    case puzzle06
 
     var input: String {
         NSDataAsset(name: name).map {
