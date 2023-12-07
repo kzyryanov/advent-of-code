@@ -14,6 +14,7 @@ enum Puzzle: String, CaseIterable {
     case puzzle04 = "Puzzle 04"
     case puzzle05 = "Puzzle 05"
     case puzzle06 = "Puzzle 06"
+    case puzzle07 = "Puzzle 07"
 
     var name: String { rawValue }
 
@@ -22,25 +23,28 @@ enum Puzzle: String, CaseIterable {
         switch self {
         case .puzzle01:
             Puzzle01(input: Input.puzzle01.input)
-                .navigationTitle(self.name)
+                .navigationTitle(name)
         case .puzzle02:
             Puzzle02(
                 input: Input.puzzle02.input,
                 bag: Bag(red: 12, green: 13, blue: 14)
             )
-            .navigationTitle(self.name)
+            .navigationTitle(name)
         case .puzzle03:
             Puzzle03(input: Input.puzzle03.input)
-                .navigationTitle(self.name)
+                .navigationTitle(name)
         case .puzzle04:
             Puzzle04(input: Input.puzzle04.input)
-                .navigationTitle(self.name)
+                .navigationTitle(name)
         case .puzzle05:
             Puzzle05(input: Input.puzzle05.input)
-                .navigationTitle(self.name)
+                .navigationTitle(name)
         case .puzzle06:
             Puzzle06(input: Input.puzzle06.input)
-                .navigationTitle(self.name)
+                .navigationTitle(name)
+        case .puzzle07:
+            Puzzle07(input: Input.puzzle07.input)
+                .navigationTitle(name)
         }
     }
 }
