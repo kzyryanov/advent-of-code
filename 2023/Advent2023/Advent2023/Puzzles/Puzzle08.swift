@@ -34,12 +34,15 @@ struct Puzzle08: View {
             Button(
                 action: {
                     Task {
-                        await solveFirst()
                         let clock = ContinuousClock()
-                        let result = await clock.measure {
+                        let result1 = await clock.measure {
+                            await solveFirst()
+                        }
+                        print("Result 1: \(result1)")
+                        let result2 = await clock.measure {
                             await solveSecond()
                         }
-                        print(result)
+                        print("Result 2: \(result2)")
                     }
                 },
                 label: {
@@ -165,7 +168,7 @@ struct Puzzle08: View {
         let divisions = stepsCounts.values.map { steps in
             var division: [Int] = []
 
-            var number = steps
+            let number = steps
             var divider = 2
 
             if number.isPrime {

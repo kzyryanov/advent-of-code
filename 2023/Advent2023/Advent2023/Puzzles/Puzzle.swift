@@ -34,8 +34,15 @@ struct PuzzleView: View {
             Button(
                 action: {
                     Task {
-                        await solveFirst()
-                        await solveSecond()
+                        let clock = ContinuousClock()
+                        let result1 = await clock.measure {
+                            await solveFirst()
+                        }
+                        print("Result 1: \(result1)")
+                        let result2 = await clock.measure {
+                            await solveSecond()
+                        }
+                        print("Result 2: \(result2)")
                     }
                 },
                 label: {
