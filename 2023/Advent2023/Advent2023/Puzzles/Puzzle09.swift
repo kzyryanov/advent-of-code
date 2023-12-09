@@ -147,10 +147,7 @@ struct Puzzle09: View {
                 historyDiffs.append(diffs(in: last))
             }
 
-            var value = 0
-            for firstInDiff in historyDiffs.reversed().compactMap(\.first) {
-                value = firstInDiff - value
-            }
+            let value = historyDiffs.reversed().compactMap(\.first).reduce(0, { $1 - $0 })
 
             return value
         }
