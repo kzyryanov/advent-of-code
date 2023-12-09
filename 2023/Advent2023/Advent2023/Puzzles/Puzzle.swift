@@ -95,6 +95,7 @@ struct PuzzleView: View {
         let result = 0
 
         await MainActor.run {
+            print("Result 1: \(result)")
             answerFirst = result
         }
     }
@@ -109,6 +110,7 @@ struct PuzzleView: View {
         let result = 0
 
         await MainActor.run {
+            print("Result 1: \(result)")
             answerSecond = result
         }
     }
