@@ -23,6 +23,7 @@
 		B5FDF0FF2B2201B40046B927 /* Puzzle06.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDF0FE2B2201B40046B927 /* Puzzle06.swift */; };
 		B5FDF1012B2211A20046B927 /* Puzzle07.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDF1002B2211A20046B927 /* Puzzle07.swift */; };
 		B5FDF1032B2350E70046B927 /* Puzzle08.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDF1022B2350E70046B927 /* Puzzle08.swift */; };
+		B5FDF1052B2511990046B927 /* Puzzle09.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FDF1042B2511990046B927 /* Puzzle09.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B5FDF0FE2B2201B40046B927 /* Puzzle06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle06.swift; sourceTree = "<group>"; };
 		B5FDF1002B2211A20046B927 /* Puzzle07.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle07.swift; sourceTree = "<group>"; };
 		B5FDF1022B2350E70046B927 /* Puzzle08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle08.swift; sourceTree = "<group>"; };
+		B5FDF1042B2511990046B927 /* Puzzle09.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle09.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				B5FDF0FE2B2201B40046B927 /* Puzzle06.swift */,
 				B5FDF1002B2211A20046B927 /* Puzzle07.swift */,
 				B5FDF1022B2350E70046B927 /* Puzzle08.swift */,
+				B5FDF1042B2511990046B927 /* Puzzle09.swift */,
 				B5171C2C2B1DDA6900E97D09 /* Puzzle.swift */,
 			);
 			path = Puzzles;
@@ -202,6 +205,7 @@
 				B56CCC682B1A020700E02088 /* Puzzle01.swift in Sources */,
 				B5171C2D2B1DDA6900E97D09 /* Puzzle.swift in Sources */,
 				B56CCC5A2B1A00FF00E02088 /* ContentView.swift in Sources */,
+				B5FDF1052B2511990046B927 /* Puzzle09.swift in Sources */,
 				B5FDF1032B2350E70046B927 /* Puzzle08.swift in Sources */,
 				B5171C312B1E1E4B00E97D09 /* Puzzle04.swift in Sources */,
 				B5FDF1012B2211A20046B927 /* Puzzle07.swift in Sources */,
