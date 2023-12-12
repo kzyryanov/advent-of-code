@@ -19,6 +19,7 @@ enum Puzzle: String, CaseIterable {
     case puzzle09 = "Puzzle 09"
     case puzzle10 = "Puzzle 10"
     case puzzle11 = "Puzzle 11"
+    case puzzle12 = "Puzzle 12"
 
     var name: String { rawValue }
 
@@ -60,6 +61,9 @@ enum Puzzle: String, CaseIterable {
                 .navigationTitle(name)
         case .puzzle11:
             Puzzle11(input: Input.puzzle11.input)
+                .navigationTitle(name)
+        case .puzzle12:
+            Puzzle12(input: Input.puzzle12.input)
                 .navigationTitle(name)
         }
     }

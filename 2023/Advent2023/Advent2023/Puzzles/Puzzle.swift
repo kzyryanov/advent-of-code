@@ -34,6 +34,10 @@ struct PuzzleView: View {
             Button(
                 action: {
                     Task {
+                        isSolving = true
+                        defer {
+                            isSolving = false
+                        }
                         let clock = ContinuousClock()
                         let result1 = await clock.measure {
                             await solveFirst()
@@ -87,10 +91,6 @@ struct PuzzleView: View {
 
     private func solveFirst() async {
         answerFirst = nil
-        isSolving = true
-        defer {
-            isSolving = false
-        }
 
         let result = 0
 
@@ -102,10 +102,6 @@ struct PuzzleView: View {
 
     private func solveSecond() async {
         answerSecond = nil
-        isSolving = true
-        defer {
-            isSolving = false
-        }
 
         let result = 0
 
