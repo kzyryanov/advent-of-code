@@ -556,9 +556,7 @@ private enum Pipe: Character, CaseIterable {
     }
 }
 
-private struct Point: Hashable, CustomStringConvertible {
-    let x, y: Int
-
+private extension Point {
     func location(for move: Direction) -> Point {
         switch move {
         case .north: return Point(x: x, y: y - 1)
@@ -566,10 +564,6 @@ private struct Point: Hashable, CustomStringConvertible {
         case .east: return Point(x: x + 1, y: y)
         case .west: return Point(x: x - 1, y: y)
         }
-    }
-
-    var description: String {
-        "{\(x), \(y)}"
     }
 }
 

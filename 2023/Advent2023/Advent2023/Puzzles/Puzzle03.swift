@@ -229,14 +229,6 @@ struct Puzzle03: View {
     }
 }
 
-private struct Point: CustomStringConvertible {
-    let x, y: Int
-
-    var description: String {
-        "(x: \(x), y: \(y))"
-    }
-}
-
 private struct Size: CustomStringConvertible {
     let width, height: Int
 

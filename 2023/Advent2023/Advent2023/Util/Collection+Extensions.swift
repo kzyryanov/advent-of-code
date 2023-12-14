@@ -50,3 +50,7 @@ extension Collection where Self.Iterator.Element: Collection {
         return result
     }
 }
+
+extension EnumeratedSequence {
+    var asArray: [Element] { Array(self) }
+}

@@ -264,14 +264,6 @@ struct Puzzle11: View {
     }
 }
 
-private struct Point: Hashable, CustomStringConvertible {
-    let x, y: Int
-
-    var description: String {
-        "{\(x), \(y)}"
-    }
-}
-
 #Preview {
     Puzzle11(input: Input.puzzle11.testInput)
 }
