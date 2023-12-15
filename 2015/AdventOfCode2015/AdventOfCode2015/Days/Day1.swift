@@ -43,7 +43,7 @@ struct Day1: View {
             .listStyle(.plain)
             .listRowSeparator(.hidden)
             .listSectionSeparator(.hidden)
-            .onChange(of: floor) { newValue in
+            .onChange(of: floor) {
                 proxy.scrollTo(floor)
             }
         }
