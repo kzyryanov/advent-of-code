@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B56A18D92B2BAB4200FBC5D6 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18D82B2BAB4200FBC5D6 /* Input.swift */; };
+		B56A18DB2B2BAB6E00FBC5D6 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18DA2B2BAB6E00FBC5D6 /* Puzzle.swift */; };
+		B56A18DD2B2BAB8700FBC5D6 /* Puzzle09.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18DC2B2BAB8700FBC5D6 /* Puzzle09.swift */; };
+		B56A18DF2B2BACE300FBC5D6 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18DE2B2BACE300FBC5D6 /* Collection+Extensions.swift */; };
 		B5BC9A112A5F241700E52D50 /* AdventOfCode2015App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC9A102A5F241700E52D50 /* AdventOfCode2015App.swift */; };
 		B5BC9A132A5F241700E52D50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC9A122A5F241700E52D50 /* ContentView.swift */; };
 		B5BC9A152A5F241800E52D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5BC9A142A5F241800E52D50 /* Assets.xcassets */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B56A18D82B2BAB4200FBC5D6 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		B56A18DA2B2BAB6E00FBC5D6 /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
+		B56A18DC2B2BAB8700FBC5D6 /* Puzzle09.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle09.swift; sourceTree = "<group>"; };
+		B56A18DE2B2BACE300FBC5D6 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		B5BC9A0D2A5F241700E52D50 /* AdventOfCode2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BC9A102A5F241700E52D50 /* AdventOfCode2015App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2015App.swift; sourceTree = "<group>"; };
 		B5BC9A122A5F241700E52D50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B56A18D72B2BAB3800FBC5D6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B56A18D82B2BAB4200FBC5D6 /* Input.swift */,
+				B56A18DE2B2BACE300FBC5D6 /* Collection+Extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		B5BC9A042A5F241700E52D50 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +120,7 @@
 		B5BC9A0F2A5F241700E52D50 /* AdventOfCode2015 */ = {
 			isa = PBXGroup;
 			children = (
+				B56A18D72B2BAB3800FBC5D6 /* Util */,
 				B5BC9A442A7C47AD00E52D50 /* Resources */,
 				B5BC9A3B2A5F257400E52D50 /* Days */,
 				B5BC9A102A5F241700E52D50 /* AdventOfCode2015App.swift */,
@@ -145,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				B5BC9A402A5F2AC500E52D50 /* Day1.swift */,
+				B56A18DA2B2BAB6E00FBC5D6 /* Puzzle.swift */,
+				B56A18DC2B2BAB8700FBC5D6 /* Puzzle09.swift */,
 			);
 			path = Days;
 			sourceTree = "<group>";
@@ -288,11 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56A18D92B2BAB4200FBC5D6 /* Input.swift in Sources */,
+				B56A18DB2B2BAB6E00FBC5D6 /* Puzzle.swift in Sources */,
 				B5BC9A3D2A5F29C100E52D50 /* TreeView.swift in Sources */,
 				B5BC9A412A5F2AC500E52D50 /* Day1.swift in Sources */,
+				B56A18DD2B2BAB8700FBC5D6 /* Puzzle09.swift in Sources */,
 				B5BC9A132A5F241700E52D50 /* ContentView.swift in Sources */,
 				B5BC9A3F2A5F29DE00E52D50 /* Day.swift in Sources */,
 				B5BC9A112A5F241700E52D50 /* AdventOfCode2015App.swift in Sources */,
+				B56A18DF2B2BACE300FBC5D6 /* Collection+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,10 +485,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.zuluteam.AdventOfCode2015;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,10 +525,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.zuluteam.AdventOfCode2015;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,9 +1,10 @@
 //
 //  Input.swift
-//  Advent2023
+//  AdventOfCode2015
 //
-//  Created by Konstantin Zyrianov on 2023-12-01.
+//  Created by Konstantin Zyrianov on 2023-12-14.
 //
+
 
 import Foundation
 #if canImport(UIKit)
@@ -27,17 +28,6 @@ enum Input: String {
     case puzzle12
     case puzzle13
     case puzzle14
-    case puzzle15
-    case puzzle16
-    case puzzle17
-    case puzzle18
-    case puzzle19
-    case puzzle20
-    case puzzle21
-    case puzzle22
-    case puzzle23
-    case puzzle24
-    case puzzle25
 
     var input: String {
         NSDataAsset(name: name).map {
@@ -62,3 +52,4 @@ enum Input: String {
     func testName(number: Int) -> String { "\(rawValue)_test\(number)" }
 
 }
+

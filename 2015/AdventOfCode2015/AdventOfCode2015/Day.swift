@@ -12,7 +12,7 @@ enum Days {
     fileprivate static let maxDay = 25
 
     static let days = (1...maxDay).map(Day.init)
-    private static let solved: Set<Day.ID> = [1]
+    private static let solved: Set<Day.ID> = [1, 9]
 
     static func isSolved(_ day: Day) -> Bool {
         solved.contains(day.id)
@@ -30,6 +30,7 @@ struct Day: Identifiable, Hashable {
     var contentView: some View {
         switch day {
         case 1: Day1()
+        case 9: Puzzle09(input: Input.puzzle09.input)
         default: EmptyView()
         }
     }

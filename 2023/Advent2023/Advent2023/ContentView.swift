@@ -22,6 +22,17 @@ enum Puzzle: String, CaseIterable {
     case puzzle12 = "Puzzle 12"
     case puzzle13 = "Puzzle 13"
     case puzzle14 = "Puzzle 14"
+    case puzzle15 = "Puzzle 15"
+//    case puzzle16 = "Puzzle 16"
+//    case puzzle17 = "Puzzle 17"
+//    case puzzle18 = "Puzzle 18"
+//    case puzzle19 = "Puzzle 19"
+//    case puzzle20 = "Puzzle 20"
+//    case puzzle21 = "Puzzle 21"
+//    case puzzle22 = "Puzzle 22"
+//    case puzzle23 = "Puzzle 23"
+//    case puzzle24 = "Puzzle 24"
+//    case puzzle25 = "Puzzle 25"
 
     var name: String { rawValue }
 
@@ -73,6 +84,10 @@ enum Puzzle: String, CaseIterable {
         case .puzzle14:
             Puzzle14(input: Input.puzzle14.input)
                 .navigationTitle(name)
+        case .puzzle15:
+            Puzzle15(input: Input.puzzle15.input)
+                .navigationTitle(name)
+        default: EmptyView()
         }
     }
 }
@@ -82,7 +97,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            List(Puzzle.allCases, id: \.self) { puzzle in
+            List(Puzzle.allCases.reversed(), id: \.self) { puzzle in
                 NavigationLink(value: puzzle, label: {
                     Text(puzzle.name)
                 })
