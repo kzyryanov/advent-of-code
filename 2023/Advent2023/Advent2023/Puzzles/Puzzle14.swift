@@ -302,10 +302,6 @@ private struct CacheKey: Hashable, Equatable {
     let map: [Point: Rock]
 }
 
-private enum Direction: Hashable, Equatable, CaseIterable {
-    case north, west, south, east
-}
-
 private enum Rock: Character, Equatable, Hashable, CustomStringConvertible {
     case round = "O"
     case cube = "#"

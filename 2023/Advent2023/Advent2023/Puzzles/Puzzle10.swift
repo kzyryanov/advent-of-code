@@ -501,24 +501,6 @@ struct Puzzle10: View {
     }
 }
 
-private enum Direction: String, CaseIterable, CustomStringConvertible {
-    case north
-    case south
-    case east
-    case west
-
-    var opposite: Direction {
-        switch self {
-        case .north: return .south
-        case .south: return .north
-        case .east: return .west
-        case .west: return .east
-        }
-    }
-
-    var description: String { rawValue }
-}
-
 private enum Pipe: Character, CaseIterable {
     case vertical = "|"
     case horizontal = "-"
@@ -553,17 +535,6 @@ private enum Pipe: Character, CaseIterable {
         }
 
         return directions.first
-    }
-}
-
-private extension Point {
-    func location(for move: Direction) -> Point {
-        switch move {
-        case .north: return Point(x: x, y: y - 1)
-        case .south: return Point(x: x, y: y + 1)
-        case .east: return Point(x: x + 1, y: y)
-        case .west: return Point(x: x - 1, y: y)
-        }
     }
 }
 

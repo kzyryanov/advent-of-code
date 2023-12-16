@@ -23,7 +23,7 @@ enum Puzzle: String, CaseIterable {
     case puzzle13 = "Puzzle 13"
     case puzzle14 = "Puzzle 14"
     case puzzle15 = "Puzzle 15"
-//    case puzzle16 = "Puzzle 16"
+    case puzzle16 = "Puzzle 16"
 //    case puzzle17 = "Puzzle 17"
 //    case puzzle18 = "Puzzle 18"
 //    case puzzle19 = "Puzzle 19"
@@ -86,6 +86,9 @@ enum Puzzle: String, CaseIterable {
                 .navigationTitle(name)
         case .puzzle15:
             Puzzle15(input: Input.puzzle15.input)
+                .navigationTitle(name)
+        case .puzzle16:
+            Puzzle16(input: Input.puzzle16.input)
                 .navigationTitle(name)
         default: EmptyView()
         }

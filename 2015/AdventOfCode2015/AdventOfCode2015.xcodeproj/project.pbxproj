@@ -12,6 +12,7 @@
 		B56A18DD2B2BAB8700FBC5D6 /* Puzzle09.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18DC2B2BAB8700FBC5D6 /* Puzzle09.swift */; };
 		B56A18DF2B2BACE300FBC5D6 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18DE2B2BACE300FBC5D6 /* Collection+Extensions.swift */; };
 		B56A18E32B2CFE2000FBC5D6 /* Puzzle10.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18E22B2CFE2000FBC5D6 /* Puzzle10.swift */; };
+		B56A18E52B2D056E00FBC5D6 /* Puzzle11.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18E42B2D056E00FBC5D6 /* Puzzle11.swift */; };
 		B5BC9A112A5F241700E52D50 /* AdventOfCode2015App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC9A102A5F241700E52D50 /* AdventOfCode2015App.swift */; };
 		B5BC9A132A5F241700E52D50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC9A122A5F241700E52D50 /* ContentView.swift */; };
 		B5BC9A152A5F241800E52D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5BC9A142A5F241800E52D50 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		B56A18DC2B2BAB8700FBC5D6 /* Puzzle09.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle09.swift; sourceTree = "<group>"; };
 		B56A18DE2B2BACE300FBC5D6 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		B56A18E22B2CFE2000FBC5D6 /* Puzzle10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle10.swift; sourceTree = "<group>"; };
+		B56A18E42B2D056E00FBC5D6 /* Puzzle11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle11.swift; sourceTree = "<group>"; };
 		B5BC9A0D2A5F241700E52D50 /* AdventOfCode2015.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdventOfCode2015.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BC9A102A5F241700E52D50 /* AdventOfCode2015App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventOfCode2015App.swift; sourceTree = "<group>"; };
 		B5BC9A122A5F241700E52D50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				B56A18DA2B2BAB6E00FBC5D6 /* Puzzle.swift */,
 				B56A18DC2B2BAB8700FBC5D6 /* Puzzle09.swift */,
 				B56A18E22B2CFE2000FBC5D6 /* Puzzle10.swift */,
+				B56A18E42B2D056E00FBC5D6 /* Puzzle11.swift */,
 			);
 			path = Days;
 			sourceTree = "<group>";
@@ -244,7 +247,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					B5BC9A0C2A5F241700E52D50 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -321,6 +324,7 @@
 				B5BC9A3F2A5F29DE00E52D50 /* Day.swift in Sources */,
 				B5BC9A112A5F241700E52D50 /* AdventOfCode2015App.swift in Sources */,
 				B56A18DF2B2BACE300FBC5D6 /* Collection+Extensions.swift in Sources */,
+				B56A18E52B2D056E00FBC5D6 /* Puzzle11.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -390,9 +395,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -448,9 +456,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -474,6 +484,7 @@
 				CODE_SIGN_ENTITLEMENTS = AdventOfCode2015/AdventOfCode2015.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AdventOfCode2015/Preview Content\"";
 				DEVELOPMENT_TEAM = 2DMTV2NW38;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -514,6 +525,7 @@
 				CODE_SIGN_ENTITLEMENTS = AdventOfCode2015/AdventOfCode2015.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AdventOfCode2015/Preview Content\"";
 				DEVELOPMENT_TEAM = 2DMTV2NW38;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -553,6 +565,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2DMTV2NW38;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
@@ -576,6 +589,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2DMTV2NW38;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
@@ -598,6 +612,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2DMTV2NW38;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
@@ -620,6 +635,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2DMTV2NW38;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;

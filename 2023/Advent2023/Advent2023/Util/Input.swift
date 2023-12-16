@@ -42,19 +42,19 @@ enum Input: String {
     var input: String {
         NSDataAsset(name: name).map {
             String(decoding: $0.data, as: UTF8.self)
-        } ?? ""
+        }!
     }
 
     var testInput: String {
         NSDataAsset(name: testName).map {
             String(decoding: $0.data, as: UTF8.self)
-        } ?? ""
+        }!
     }
 
     func testInput(number: Int) -> String {
         NSDataAsset(name: testName(number: number)).map {
             String(decoding: $0.data, as: UTF8.self)
-        } ?? ""
+        }!
     }
 
     var name: String { rawValue }
