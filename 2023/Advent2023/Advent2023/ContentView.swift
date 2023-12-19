@@ -24,15 +24,15 @@ enum Puzzle: String, CaseIterable {
     case puzzle14 = "Puzzle 14"
     case puzzle15 = "Puzzle 15"
     case puzzle16 = "Puzzle 16"
-//    case puzzle17 = "Puzzle 17"
-//    case puzzle18 = "Puzzle 18"
-//    case puzzle19 = "Puzzle 19"
-//    case puzzle20 = "Puzzle 20"
-//    case puzzle21 = "Puzzle 21"
-//    case puzzle22 = "Puzzle 22"
-//    case puzzle23 = "Puzzle 23"
-//    case puzzle24 = "Puzzle 24"
-//    case puzzle25 = "Puzzle 25"
+    case puzzle17 = "Puzzle 17"
+    case puzzle18 = "Puzzle 18"
+    case puzzle19 = "Puzzle 19"
+    case puzzle20 = "Puzzle 20"
+    case puzzle21 = "Puzzle 21"
+    case puzzle22 = "Puzzle 22"
+    case puzzle23 = "Puzzle 23"
+    case puzzle24 = "Puzzle 24"
+    case puzzle25 = "Puzzle 25"
 
     var name: String { rawValue }
 
@@ -89,6 +89,15 @@ enum Puzzle: String, CaseIterable {
                 .navigationTitle(name)
         case .puzzle16:
             Puzzle16(input: Input.puzzle16.input)
+                .navigationTitle(name)
+        case .puzzle17:
+            Puzzle17(input: Input.puzzle17.input)
+                .navigationTitle(name)
+        case .puzzle18:
+            Puzzle18(input: Input.puzzle18.input)
+                .navigationTitle(name)
+        case .puzzle19:
+            Puzzle19(input: Input.puzzle19.input)
                 .navigationTitle(name)
         default: EmptyView()
         }

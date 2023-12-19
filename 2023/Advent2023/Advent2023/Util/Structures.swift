@@ -22,7 +22,7 @@ struct Size: Hashable, Equatable, CustomStringConvertible {
 }
 
 struct Point: Hashable, Equatable, CustomStringConvertible {
-    let x, y: Int
+    var x, y: Int
 
     static let zero = Self(x: 0, y: 0)
 
@@ -31,7 +31,7 @@ struct Point: Hashable, Equatable, CustomStringConvertible {
     }
 }
 
-enum Direction: String, CaseIterable, CustomStringConvertible {
+enum Direction: String, Hashable, Equatable, CaseIterable, CustomStringConvertible {
    case north
    case west
    case south

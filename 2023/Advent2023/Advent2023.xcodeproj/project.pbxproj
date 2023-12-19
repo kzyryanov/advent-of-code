@@ -19,6 +19,9 @@
 		B56A18B82B2AF16B00FBC5D6 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18B72B2AF16B00FBC5D6 /* Structures.swift */; };
 		B56A18E12B2C48A500FBC5D6 /* Puzzle15.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18E02B2C48A500FBC5D6 /* Puzzle15.swift */; };
 		B56A18E72B2E298B00FBC5D6 /* Puzzle16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A18E62B2E298B00FBC5D6 /* Puzzle16.swift */; };
+		B56A19162B2F85A000FBC5D6 /* Puzzle17.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A19152B2F85A000FBC5D6 /* Puzzle17.swift */; };
+		B56A19182B30CD5400FBC5D6 /* Puzzle18.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A19172B30CD5400FBC5D6 /* Puzzle18.swift */; };
+		B56A191A2B3195CE00FBC5D6 /* Puzzle19.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A19192B3195CE00FBC5D6 /* Puzzle19.swift */; };
 		B56CCC582B1A00FF00E02088 /* Advent2023App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56CCC572B1A00FF00E02088 /* Advent2023App.swift */; };
 		B56CCC5A2B1A00FF00E02088 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56CCC592B1A00FF00E02088 /* ContentView.swift */; };
 		B56CCC5C2B1A010000E02088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56CCC5B2B1A010000E02088 /* Assets.xcassets */; };
@@ -47,6 +50,9 @@
 		B56A18B72B2AF16B00FBC5D6 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 		B56A18E02B2C48A500FBC5D6 /* Puzzle15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle15.swift; sourceTree = "<group>"; };
 		B56A18E62B2E298B00FBC5D6 /* Puzzle16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle16.swift; sourceTree = "<group>"; };
+		B56A19152B2F85A000FBC5D6 /* Puzzle17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle17.swift; sourceTree = "<group>"; };
+		B56A19172B30CD5400FBC5D6 /* Puzzle18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle18.swift; sourceTree = "<group>"; };
+		B56A19192B3195CE00FBC5D6 /* Puzzle19.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle19.swift; sourceTree = "<group>"; };
 		B56CCC542B1A00FF00E02088 /* Advent2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advent2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56CCC572B1A00FF00E02088 /* Advent2023App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advent2023App.swift; sourceTree = "<group>"; };
 		B56CCC592B1A00FF00E02088 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 				B56A18B52B2AEFDF00FBC5D6 /* Puzzle14.swift */,
 				B56A18E02B2C48A500FBC5D6 /* Puzzle15.swift */,
 				B56A18E62B2E298B00FBC5D6 /* Puzzle16.swift */,
+				B56A19152B2F85A000FBC5D6 /* Puzzle17.swift */,
+				B56A19172B30CD5400FBC5D6 /* Puzzle18.swift */,
+				B56A19192B3195CE00FBC5D6 /* Puzzle19.swift */,
 				B5171C2C2B1DDA6900E97D09 /* Puzzle.swift */,
 			);
 			path = Puzzles;
@@ -237,11 +246,14 @@
 				B56A18E72B2E298B00FBC5D6 /* Puzzle16.swift in Sources */,
 				B5FDF1012B2211A20046B927 /* Puzzle07.swift in Sources */,
 				B56A18B42B29D1EC00FBC5D6 /* Puzzle13.swift in Sources */,
+				B56A191A2B3195CE00FBC5D6 /* Puzzle19.swift in Sources */,
+				B56A19162B2F85A000FBC5D6 /* Puzzle17.swift in Sources */,
 				B56A18B82B2AF16B00FBC5D6 /* Structures.swift in Sources */,
 				B56A18E12B2C48A500FBC5D6 /* Puzzle15.swift in Sources */,
 				B57C36182B1F2A1000A673D4 /* Puzzle05.swift in Sources */,
 				B5171C2F2B1DDC1200E97D09 /* Puzzle03.swift in Sources */,
 				B56A18B62B2AEFDF00FBC5D6 /* Puzzle14.swift in Sources */,
+				B56A19182B30CD5400FBC5D6 /* Puzzle18.swift in Sources */,
 				B56CCC6C2B1A02C800E02088 /* Input.swift in Sources */,
 				B56CCC582B1A00FF00E02088 /* Advent2023App.swift in Sources */,
 				B56CCC702B1A139A00E02088 /* String+Extensions.swift in Sources */,
