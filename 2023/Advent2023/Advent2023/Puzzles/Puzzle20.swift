@@ -261,11 +261,11 @@ struct Puzzle20: View {
         }
 
         print(modules)
-
-        var moduleStates = modules
-
-        var lowOnRx = false
-        var lowOnRxIndex = 0
+//
+//        var moduleStates = modules
+//
+//        var lowOnRx = false
+//        var lowOnRxIndex = 0
 
 
         // Count separately when rx input node (e.g. kj) gets high pulse for each of it's parents

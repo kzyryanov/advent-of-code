@@ -102,6 +102,9 @@ enum Puzzle: String, CaseIterable {
         case .puzzle20:
             Puzzle20(input: Input.puzzle20.input)
                 .navigationTitle(name)
+        case .puzzle21:
+            Puzzle21(input: Input.puzzle21.input)
+                .navigationTitle(name)
         default: EmptyView()
         }
     }
