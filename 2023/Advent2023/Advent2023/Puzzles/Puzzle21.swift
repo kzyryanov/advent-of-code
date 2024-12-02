@@ -121,19 +121,19 @@ struct Puzzle21: View {
     private func solveSecond() async {
         answerSecond = nil
 
-        let input = Input.puzzle21.testInput
-        let (rocks, size, startingPosition) = Self.parse(input: input)
-
-        let steps = 6
-
-        let maxLocations = pow(Decimal((steps + 1)), 2)
-
-        for y in (-steps)...steps {
-            let xCount = (steps - abs(y)) + 1
-            for x in 0...xCount {
-                let point = Point(x: <#T##Int#>, y: <#T##Int#>)
-            }
-        }
+//        let input = Input.puzzle21.testInput
+//        let (rocks, size, startingPosition) = Self.parse(input: input)
+//
+//        let steps = 6
+//
+//        let maxLocations = pow(Decimal((steps + 1)), 2)
+//
+//        for y in (-steps)...steps {
+//            let xCount = (steps - abs(y)) + 1
+//            for x in 0...xCount {
+//                let point = Point(x: <#T##Int#>, y: <#T##Int#>)
+//            }
+//        }
 
 //        for rock in rocks {
 //            let diffX = abs(rock.x - startingPosition.x)
@@ -143,7 +143,7 @@ struct Puzzle21: View {
 //            }
 //        }
 
-        print(maxLocations)
+//        print(maxLocations)
 
 //        for _ in 1...steps {
 //            possibleLocations = Set(possibleLocations.flatMap { location in

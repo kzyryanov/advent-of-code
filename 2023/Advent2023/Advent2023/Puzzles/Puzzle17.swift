@@ -164,14 +164,14 @@ struct Puzzle17: View {
                 minLossDict[newStraight] = heatLoss
                 minLossMap[neighbor.point] = minLossDict
 
-                if neighbor.point != Point(x: size.width-1, y: size.height-1) {
-                    paths.insert(
-                        Path(
-                            location: neighbor.point,
-                            heatLoss: heatLoss,
-                            goingStraight: newStraight
-                        )
-                    )
+                let path = Path(
+                    location: neighbor.point,
+                    heatLoss: heatLoss,
+                    goingStraight: newStraight
+                )
+
+                if !pathCache.contains(path) && neighbor.point != Point(x: size.width-1, y: size.height-1) {
+                    paths.insert(path)
                 }
             }
         }
