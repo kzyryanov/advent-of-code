@@ -17,18 +17,18 @@ protocol PuzzleViewModel: Observable, AnyObject {
 }
 
 extension PuzzleViewModel {
-    func testSolveOne() async {
+    func testSolveOne(index: Int) async {
         let clock = ContinuousClock()
         let result = await clock.measure {
-            answer.oneTest = await solveOne(input: puzzle.testInput)
+            answer.oneTest[index] = await solveOne(input: puzzle.testInputs[index])
         }
         debugPrint("Time taken test one: \(result)")
     }
 
-    func testSolveTwo() async {
+    func testSolveTwo(index: Int) async {
         let clock = ContinuousClock()
         let result = await clock.measure {
-            answer.twoTest = await solveTwo(input: puzzle.testInput)
+            answer.twoTest[index] = await solveTwo(input: puzzle.testInputs[index])
         }
         debugPrint("Time taken test two: \(result)")
     }
@@ -51,8 +51,8 @@ extension PuzzleViewModel {
 }
 
 struct Answer: Sendable {
-    var oneTest: String = "One test"
-    var twoTest: String = "Two test"
+    var oneTest: [Int: String] = [:]
+    var twoTest: [Int: String] = [:]
     var one: String = "One"
     var two: String = "Two"
 }
@@ -66,20 +66,22 @@ struct PuzzleView: View {
                 Text("Example data result")
                     .font(.headline)
                 VStack {
-                    HStack {
-                        Text(viewModel.answer.oneTest)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    ForEach(viewModel.puzzle.testInputs.indices, id: \.self) { index in
+                        HStack {
+                            Text(viewModel.answer.oneTest[index, default: "One test \(index)"])
+                                .frame(maxWidth: .infinity, alignment: .leading)
 
-                        AsyncButton(title: "Solve") {
-                            await viewModel.testSolveOne()
+                            AsyncButton(title: "Solve") {
+                                await viewModel.testSolveOne(index: index)
+                            }
                         }
-                    }
-                    HStack {
-                        Text(viewModel.answer.twoTest)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        HStack {
+                            Text(viewModel.answer.twoTest[index, default: "Two test \(index)"])
+                                .frame(maxWidth: .infinity, alignment: .leading)
 
-                        AsyncButton(title: "Solve") {
-                            await viewModel.testSolveTwo()
+                            AsyncButton(title: "Solve") {
+                                await viewModel.testSolveTwo(index: index)
+                            }
                         }
                     }
                 }

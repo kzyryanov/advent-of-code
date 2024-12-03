@@ -15,6 +15,7 @@ import UIKit
 enum Puzzle: String, CaseIterable {
     case puzzle01
     case puzzle02
+    case puzzle03
 
     var name: String {
         self.rawValue.capitalized
@@ -24,8 +25,18 @@ enum Puzzle: String, CaseIterable {
         input(name: self.rawValue)
     }
 
-    var testInput: String {
-        input(name: self.rawValue + "_test")
+    var testInputs: [String] {
+        var testInputs: [String] = [
+            input(name: self.rawValue + "_test")
+        ]
+
+        switch self {
+        case .puzzle03:
+            testInputs.append(input(name: self.rawValue + "_test1"))
+        default:
+            break
+        }
+        return testInputs
     }
 
     private func input(name: String) -> String {
@@ -40,6 +51,7 @@ enum Puzzle: String, CaseIterable {
         switch self {
         case .puzzle01: return Puzzle01ViewModel(puzzle: self)
         case .puzzle02: return Puzzle02ViewModel(puzzle: self)
+        case .puzzle03: return Puzzle03ViewModel(puzzle: self)
         }
     }
 }
