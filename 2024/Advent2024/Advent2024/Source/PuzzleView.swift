@@ -18,20 +18,35 @@ protocol PuzzleViewModel: Observable, AnyObject {
 
 extension PuzzleViewModel {
     func testSolveOne() async {
-        let input = puzzle.testInput
-        answer.oneTest = await solveOne(input: input)
+        let clock = ContinuousClock()
+        let result = await clock.measure {
+            answer.oneTest = await solveOne(input: puzzle.testInput)
+        }
+        debugPrint("Time taken test one: \(result)")
     }
 
     func testSolveTwo() async {
-        answer.twoTest = await solveTwo(input: puzzle.testInput)
+        let clock = ContinuousClock()
+        let result = await clock.measure {
+            answer.twoTest = await solveTwo(input: puzzle.testInput)
+        }
+        debugPrint("Time taken test two: \(result)")
     }
 
     func solveOne() async {
-        answer.one = await solveOne(input: puzzle.input)
+        let clock = ContinuousClock()
+        let result = await clock.measure {
+            answer.one = await solveOne(input: puzzle.input)
+        }
+        debugPrint("Time taken one: \(result)")
     }
 
     func solveTwo() async {
-        answer.two = await solveTwo(input: puzzle.input)
+        let clock = ContinuousClock()
+        let result = await clock.measure {
+            answer.two = await solveTwo(input: puzzle.input)
+        }
+        debugPrint("Time taken two: \(result)")
     }
 }
 

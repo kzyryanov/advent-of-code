@@ -18,16 +18,67 @@ final class Puzzle02ViewModel: PuzzleViewModel {
     }
 
     func solveOne(input: String) async -> String {
-        return ""
+        let reports = data(from: input)
+
+        let result = reports.count(where: isReportSafe)
+
+        return "\(result)"
     }
 
     func solveTwo(input: String) async -> String {
-        return ""
+        let reports = data(from: input)
+
+        let result = reports.count { report in
+            let isSafe = isReportSafe(report)
+
+            if !isSafe {
+                for index in 0..<report.count {
+                    var newReport = report
+                    newReport.remove(at: index)
+                    if isReportSafe(newReport) {
+                        return true
+                    }
+                }
+                return false
+            }
+
+            return true
+        }
+
+        return "\(result)"
+    }
+
+    func isReportSafe(_ report: [Int]) -> Bool {
+        var order: ComparisonResult = .orderedSame
+
+        for index in 0..<(report.count-1) {
+            let diff = report[index+1] - report[index]
+            switch diff {
+            case (-3)...(-1):
+                if order == .orderedSame {
+                    order = .orderedDescending
+                } else if order == .orderedAscending {
+                    return false
+                }
+            case 1...3:
+                if order == .orderedSame {
+                    order = .orderedAscending
+                } else if order == .orderedDescending {
+                    return false
+                }
+            default: return false
+            }
+        }
+        return true
     }
 
     func data(from input: String) -> [[Int]] {
-        let lines = input.lines.filter(\.isNotEmpty)
-
-        return []
+        input.lines
+            .filter(\.isNotEmpty)
+            .map {
+                $0.split(whereSeparator: \.isWhitespace)
+                    .filter(\.isNotEmpty)
+                    .map { Int($0)! }
+            }
     }
 }

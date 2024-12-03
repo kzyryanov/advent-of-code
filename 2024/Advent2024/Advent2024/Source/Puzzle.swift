@@ -14,6 +14,7 @@ import UIKit
 
 enum Puzzle: String, CaseIterable {
     case puzzle01
+    case puzzle02
 
     var name: String {
         self.rawValue.capitalized
@@ -38,6 +39,7 @@ enum Puzzle: String, CaseIterable {
     var viewModel: PuzzleViewModel {
         switch self {
         case .puzzle01: return Puzzle01ViewModel(puzzle: self)
+        case .puzzle02: return Puzzle02ViewModel(puzzle: self)
         }
     }
 }
