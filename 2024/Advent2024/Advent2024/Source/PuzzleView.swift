@@ -22,7 +22,7 @@ extension PuzzleViewModel {
         let result = await clock.measure {
             answer.oneTest[index] = await solveOne(input: puzzle.testInputs[index])
         }
-        debugPrint("Time taken test one: \(result)")
+        debugPrint("Time \(puzzle.name) test one: \(result)")
     }
 
     func testSolveTwo(index: Int) async {
@@ -30,7 +30,7 @@ extension PuzzleViewModel {
         let result = await clock.measure {
             answer.twoTest[index] = await solveTwo(input: puzzle.testInputs[index])
         }
-        debugPrint("Time taken test two: \(result)")
+        debugPrint("Time \(puzzle.name) test two: \(result)")
     }
 
     func solveOne() async {
@@ -38,7 +38,7 @@ extension PuzzleViewModel {
         let result = await clock.measure {
             answer.one = await solveOne(input: puzzle.input)
         }
-        debugPrint("Time taken one: \(result)")
+        debugPrint("Time \(puzzle.name) one: \(result)")
     }
 
     func solveTwo() async {
@@ -46,7 +46,7 @@ extension PuzzleViewModel {
         let result = await clock.measure {
             answer.two = await solveTwo(input: puzzle.input)
         }
-        debugPrint("Time taken two: \(result)")
+        debugPrint("Time \(puzzle.name) two: \(result)")
     }
 }
 
