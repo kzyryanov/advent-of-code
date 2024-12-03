@@ -33,7 +33,7 @@ final class Puzzle03ViewModel: PuzzleViewModel {
     }
 
     func solveTwo(input: String) async -> String {
-        let regex = /mul\((?<one>\d+?),(?<two>\d+?)\)|do\(\)|don't\(\)/
+        let regex = /mul\((?<one>\d{1,3}?),(?<two>\d{1,3}}?)\)|do\(\)|don't\(\)/
 
         var result: Int = 0
         var skip: Bool = false
