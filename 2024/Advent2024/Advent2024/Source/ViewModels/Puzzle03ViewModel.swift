@@ -32,48 +32,21 @@ final class Puzzle03ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    enum Match {
-        case numbers(index: String.Index, one: Int, two: Int)
-        case `do`(index: String.Index)
-        case dont(index: String.Index)
-
-        var index: String.Index {
-            switch self {
-            case .numbers(let index, _, _): return index
-            case .do(let index): return index
-            case .dont(let index): return index
-            }
-        }
-    }
-
     func solveTwo(input: String) async -> String {
-        let regex = /mul\((?<one>\d+?),(?<two>\d+?)\)/
-        let doRegex = /do\(\)/
-        let dontRegex = /don't\(\)/
-
-        let dos = input.matches(of: doRegex).map {
-            Match.do(index: $0.startIndex)
-        }
-        let donts = input.matches(of: dontRegex).map {
-            Match.dont(index: $0.startIndex)
-        }
-        let matches = input.matches(of: regex).map {
-            Match.numbers(index: $0.range.lowerBound, one: Int($0.output.one)!, two: Int($0.output.two)!)
-        }
-
-        let allMatches = (dos + donts + matches).sorted(by: { $0.index < $1.index })
+        let regex = /mul\((?<one>\d+?),(?<two>\d+?)\)|do\(\)|don't\(\)/
 
         var result: Int = 0
         var skip: Bool = false
-        for match in allMatches {
-            switch match {
-            case let .numbers(_, one, two) where !skip:
-                result += (one * two)
-            case .do:
+        for match in input.matches(of: regex) {
+            switch match.0 {
+            case "do()":
                 skip = false
-            case .dont:
+            case "don't()":
                 skip = true
-            default: break
+            case _ where skip == false:
+                result += Int(match.output.one!)! * Int(match.output.two!)!
+            default:
+                break
             }
         }
 
