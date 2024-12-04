@@ -29,7 +29,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
         for xPoint in xPoints {
             for direction in Direction.allCases {
                 let point = direction.move(from: xPoint)
-                if rect.isPointInside(point) && map[point] == "M" {
+                if map[point] == "M" {
                     mPoints.append((point, direction))
                 }
             }
@@ -39,7 +39,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
 
         for mPoint in mPoints {
             let point = mPoint.direction.move(from: mPoint.location)
-            if rect.isPointInside(point) && map[point] == "A" {
+            if map[point] == "A" {
                 aPoints.append((point, mPoint.direction))
             }
         }
@@ -48,7 +48,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
 
         for aPoint in aPoints {
             let point = aPoint.direction.move(from: aPoint.location)
-            if rect.isPointInside(point) && map[point] == "S" {
+            if map[point] == "S" {
                 sPoints.append((point, aPoint.direction))
             }
         }
@@ -65,7 +65,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
             return character == "A"
         }.keys
 
-        var xVariations: [((m: Direction, s: Direction), (m: Direction, s: Direction))] = [
+        let xVariations: [((m: Direction, s: Direction), (m: Direction, s: Direction))] = [
             ((.upLeft, .downRight), (.downLeft, .upRight)),
             ((.upLeft, .downRight), (.upRight, .downLeft)),
             ((.downRight, .upLeft), (.downLeft, .upRight)),
@@ -80,10 +80,6 @@ final class Puzzle04ViewModel: PuzzleViewModel {
                 let mPoint2 = variation.1.m.move(from: aPoint)
                 let sPoint1 = variation.0.s.move(from: aPoint)
                 let sPoint2 = variation.1.s.move(from: aPoint)
-
-                guard [mPoint1, mPoint2, sPoint1, sPoint2].allSatisfy(rect.isPointInside) else {
-                    continue
-                }
 
                 if map[mPoint1] == "M" && map[mPoint2] == "M" && map[sPoint1] == "S" && map[sPoint2] == "S" {
                     result += 1
