@@ -22,14 +22,16 @@ struct Rect: Hashable, CustomStringConvertible {
     var description: String { "(\(origin), \(size))" }
 
     func isPointInside(_ point: Point) -> Bool {
-        origin.x...(origin.x + size.width) ~= point.x &&
-        origin.y...(origin.y + size.height) ~= point.y
+        origin.x..<(origin.x + size.width) ~= point.x &&
+        origin.y..<(origin.y + size.height) ~= point.y
     }
 }
 
 struct Size: Hashable, CustomStringConvertible {
-    let width: Int
-    let height: Int
+    var width: Int
+    var height: Int
+
+    static let zero = Size(width: 0, height: 0)
 
     var description: String { "(\(width), \(height))" }
 }
@@ -37,6 +39,8 @@ struct Size: Hashable, CustomStringConvertible {
 struct Point: Hashable, CustomStringConvertible {
     let x: Int
     let y: Int
+
+    static let zero = Point(x: 0, y: 0)
 
     var description: String { "(\(x), \(y))" }
 }
@@ -56,6 +60,19 @@ enum Direction: String, Hashable, CaseIterable, CustomStringConvertible {
         case .downLeft: return Point(x: point.x-1, y: point.y+1)
         case .down: return Point(x: point.x, y: point.y+1)
         case .downRight: return Point(x: point.x+1, y: point.y+1)
+        }
+    }
+
+    var rotated90Right: Direction {
+        switch self {
+        case .upLeft: return .upRight
+        case .up: return .right
+        case .upRight: return .downRight
+        case .right: return .down
+        case .downRight: return .downLeft
+        case .down: return .left
+        case .downLeft: return .upLeft
+        case .left: return .up
         }
     }
 }
