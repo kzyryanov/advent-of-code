@@ -9,8 +9,6 @@ import SwiftUI
 
 @Observable
 final class Puzzle02ViewModel: PuzzleViewModel {
-    var answer: Answer = Answer()
-
     let puzzle: Puzzle
 
     init(puzzle: Puzzle) {

@@ -9,8 +9,6 @@ import SwiftUI
 
 @Observable
 final class Puzzle06ViewModel: PuzzleViewModel {
-    var answer: Answer = Answer()
-
     let puzzle: Puzzle
 
     init(puzzle: Puzzle) {
@@ -56,47 +54,50 @@ final class Puzzle06ViewModel: PuzzleViewModel {
 
         let rect = Rect(origin: .zero, size: size)
 
-        var obstacles: Set<Point> = []
+        let result = await withTaskGroup(of: Bool.self) { group in
+            for x in 0..<size.width {
+                for y in 0..<size.height {
+                    group.addTask {
+                        let obstacle = Point(x: x, y: y)
 
-        for x in 0..<size.width {
-            for y in 0..<size.height {
-                let obstacle = Point(x: x, y: y)
+                        if map[obstacle] == true || obstacle == startingLocation {
+                            return false
+                        }
 
-                if map[obstacle] == true || obstacle == startingLocation {
-                    continue
+                        var mapWithObstacle = map
+
+                        mapWithObstacle[obstacle] = true
+
+                        var visited: Set<Move> = []
+
+                        var position = startingLocation
+                        var direction = startingDirection
+
+                        repeat {
+                            visited.insert(Move(position: position, direction: direction))
+
+                            var newPosition = direction.move(from: position)
+
+                            while mapWithObstacle[newPosition] == true {
+                                direction = direction.rotated90Right
+                                newPosition = direction.move(from: position)
+                            }
+
+                            position = newPosition
+
+                            if visited.contains(Move(position: position, direction: direction)) {
+                                return true
+                            }
+                        } while rect.isPointInside(position)
+
+                        return false
+                    }
                 }
-
-                var mapWithObstacle = map
-
-                mapWithObstacle[obstacle] = true
-
-                var visited: Set<Move> = []
-
-                var position = startingLocation
-                var direction = startingDirection
-
-                repeat {
-                    visited.insert(Move(position: position, direction: direction))
-
-                    var newPosition = direction.move(from: position)
-
-                    while mapWithObstacle[newPosition] == true {
-                        direction = direction.rotated90Right
-                        newPosition = direction.move(from: position)
-                    }
-
-                    position = newPosition
-
-                    if visited.contains(Move(position: position, direction: direction)) {
-                        obstacles.insert(obstacle)
-                        break
-                    }
-
-                } while rect.isPointInside(position)
             }
+            return await group.reduce([]) { partialResult, res in
+                partialResult + [res]
+            }.filter { $0 }.count
         }
-
-        let result = obstacles.count
 
         return "\(result)"
     }

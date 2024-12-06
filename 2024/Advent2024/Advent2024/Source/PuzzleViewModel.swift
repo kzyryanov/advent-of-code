@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-@MainActor
-protocol PuzzleViewModel: Observable, AnyObject {
-    var answer: Answer { get set }
+protocol PuzzleViewModel: Observable, AnyObject, Sendable {
     var puzzle: Puzzle { get }
 
     func solveOne(input: String) async -> String
@@ -17,40 +15,49 @@ protocol PuzzleViewModel: Observable, AnyObject {
 }
 
 extension PuzzleViewModel {
-    func testSolveOne(index: Int) async {
+    func testSolveOne(index: Int) async -> String {
         let clock = ContinuousClock()
+        var answer: String!
         let result = await clock.measure {
-            answer.oneTest[index] = await solveOne(input: puzzle.testInputs[index])
+            answer = await solveOne(input: puzzle.testInputs[index])
         }
         debugPrint("Time \(puzzle.name) test one: \(result)")
+
+        return answer
     }
 
-    func testSolveTwo(index: Int) async {
+    func testSolveTwo(index: Int) async -> String {
         let clock = ContinuousClock()
+        var answer: String!
         let result = await clock.measure {
-            answer.twoTest[index] = await solveTwo(input: puzzle.testInputs[index])
+            answer = await solveTwo(input: puzzle.testInputs[index])
         }
         debugPrint("Time \(puzzle.name) test two: \(result)")
+        return answer
     }
 
-    func solveOne() async {
+    func solveOne() async -> String {
         let clock = ContinuousClock()
+        var answer: String!
         let result = await clock.measure {
-            answer.one = await solveOne(input: puzzle.input)
+            answer = await solveOne(input: puzzle.input)
         }
         debugPrint("Time \(puzzle.name) one: \(result)")
+        return answer
     }
 
-    func solveTwo() async {
+    func solveTwo() async -> String {
         let clock = ContinuousClock()
+        var answer: String!
         let result = await clock.measure {
-            answer.two = await solveTwo(input: puzzle.input)
+            answer = await solveTwo(input: puzzle.input)
         }
         debugPrint("Time \(puzzle.name) two: \(result)")
+        return answer
     }
 }
 
-struct Answer: Sendable {
+struct Answer {
     var oneTest: [Int: String] = [:]
     var twoTest: [Int: String] = [:]
     var one: String = "One"

@@ -9,8 +9,6 @@ import SwiftUI
 
 @Observable
 final class Puzzle04ViewModel: PuzzleViewModel {
-    var answer: Answer = Answer()
-
     let puzzle: Puzzle
 
     init(puzzle: Puzzle) {
@@ -18,7 +16,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
     }
 
     func solveOne(input: String) async -> String {
-        let (map, rect) = data(from: input)
+        let (map, _) = data(from: input)
 
         let xPoints = map.filter { point, character in
             return character == "X"
@@ -59,7 +57,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
     }
 
     func solveTwo(input: String) async -> String {
-        let (map, rect) = data(from: input)
+        let (map, _) = data(from: input)
 
         let aPoints = map.filter { point, character in
             return character == "A"

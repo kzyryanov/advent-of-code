@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PuzzleView: View {
     @State var viewModel: PuzzleViewModel
+    @State var answer: Answer = Answer()
 
     var body: some View {
         VStack(spacing: 32) {
@@ -18,19 +19,19 @@ struct PuzzleView: View {
                 VStack {
                     ForEach(viewModel.puzzle.testInputs.indices, id: \.self) { index in
                         HStack {
-                            Text(viewModel.answer.oneTest[index, default: "One test \(index)"])
+                            Text(answer.oneTest[index, default: "One test \(index)"])
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             AsyncButton(title: "Solve") {
-                                await viewModel.testSolveOne(index: index)
+                                answer.oneTest[index] = await viewModel.testSolveOne(index: index)
                             }
                         }
                         HStack {
-                            Text(viewModel.answer.twoTest[index, default: "Two test \(index)"])
+                            Text(answer.twoTest[index, default: "Two test \(index)"])
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             AsyncButton(title: "Solve") {
-                                await viewModel.testSolveTwo(index: index)
+                                answer.twoTest[index] = await viewModel.testSolveTwo(index: index)
                             }
                         }
                     }
@@ -42,19 +43,19 @@ struct PuzzleView: View {
                     .font(.headline)
                 VStack {
                     HStack {
-                        Text(viewModel.answer.one)
+                        Text(answer.one)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         AsyncButton(title: "Solve") {
-                            await viewModel.solveOne()
+                            answer.one = await viewModel.solveOne()
                         }
                     }
                     HStack {
-                        Text(viewModel.answer.two)
+                        Text(answer.two)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         AsyncButton(title: "Solve") {
-                            await viewModel.solveTwo()
+                            answer.two = await viewModel.solveTwo()
                         }
                     }
                 }
