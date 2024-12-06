@@ -20,13 +20,26 @@ final class Puzzle06ViewModel: PuzzleViewModel {
 
         let rect = Rect(origin: .zero, size: size)
 
-        var visited: Set<Point> = []
+        let visited = getVisited(map: map, rect: rect, startingLocation: startingLocation, startingDirection: startingDirection)
+
+        let result = visited.count
+
+        return "\(result)"
+    }
+
+    struct Move: Hashable {
+        let position: Point
+        let direction: Direction
+    }
+
+    private func getVisited(map: [Point: Bool], rect: Rect, startingLocation: Point, startingDirection: Direction) -> Set<Point> {
+        var path: Set<Point> = []
 
         var position = startingLocation
         var direction = startingDirection
 
         repeat {
-            visited.insert(position)
+            path.insert(position)
 
             var newPosition = direction.move(from: position)
 
@@ -39,14 +52,8 @@ final class Puzzle06ViewModel: PuzzleViewModel {
 
         } while rect.isPointInside(position)
 
-        let result = visited.count
+        return path
 
-        return "\(result)"
-    }
-
-    struct Move: Hashable {
-        let position: Point
-        let direction: Direction
     }
 
     func solveTwo(input: String) async -> String {
@@ -54,49 +61,44 @@ final class Puzzle06ViewModel: PuzzleViewModel {
 
         let rect = Rect(origin: .zero, size: size)
 
-        let result = await withTaskGroup(of: Bool.self) { group in
-            for x in 0..<size.width {
-                for y in 0..<size.height {
-                    group.addTask {
-                        let obstacle = Point(x: x, y: y)
+        let visited = getVisited(map: map, rect: rect, startingLocation: startingLocation, startingDirection: startingDirection)
 
-                        if map[obstacle] == true || obstacle == startingLocation {
-                            return false
+        let possibleObstacles: Set<Point> = visited.filter { $0 != startingLocation }
+
+        let result = await withTaskGroup(of: Bool.self) { group in
+            for obstacle in possibleObstacles {
+                group.addTask {
+                    var mapWithObstacle = map
+
+                    mapWithObstacle[obstacle] = true
+
+                    var visited: Set<Move> = []
+
+                    var position = startingLocation
+                    var direction = startingDirection
+
+                    repeat {
+                        visited.insert(Move(position: position, direction: direction))
+
+                        var newPosition = direction.move(from: position)
+
+                        while mapWithObstacle[newPosition] == true {
+                            direction = direction.rotated90Right
+                            newPosition = direction.move(from: position)
                         }
 
-                        var mapWithObstacle = map
+                        position = newPosition
 
-                        mapWithObstacle[obstacle] = true
+                        if visited.contains(Move(position: position, direction: direction)) {
+                            return true
+                        }
+                    } while rect.isPointInside(position)
 
-                        var visited: Set<Move> = []
-
-                        var position = startingLocation
-                        var direction = startingDirection
-
-                        repeat {
-                            visited.insert(Move(position: position, direction: direction))
-
-                            var newPosition = direction.move(from: position)
-
-                            while mapWithObstacle[newPosition] == true {
-                                direction = direction.rotated90Right
-                                newPosition = direction.move(from: position)
-                            }
-
-                            position = newPosition
-
-                            if visited.contains(Move(position: position, direction: direction)) {
-                                return true
-                            }
-                        } while rect.isPointInside(position)
-
-                        return false
-                    }
+                    return false
                 }
             }
-            return await group.reduce([]) { partialResult, res in
-                partialResult + [res]
-            }.filter { $0 }.count
+
+            return await group.reduce([], { $0 + [$1] }).filter { $0 }.count
         }
 
         return "\(result)"
