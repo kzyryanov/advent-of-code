@@ -85,36 +85,30 @@ final class Puzzle08ViewModel: PuzzleViewModel {
 
                     var i = 0
                     while true {
-                        let antinode = Point(
+                        let antinodeOne = Point(
                             x: two.x + diffX * i,
                             y: two.y + diffY * i
                         )
-                        i += 1
-                        if rect.isPointInside(antinode) {
-                            antinodes.insert(antinode)
-                        } else {
-                            break
-                        }
-                    }
-
-                    i = 0
-                    while true {
-                        let antinode = Point(
+                        let antinodeTwo = Point(
                             x: one.x - diffX * i,
                             y: one.y - diffY * i
                         )
                         i += 1
-                        if rect.isPointInside(antinode) {
-                            antinodes.insert(antinode)
-                        } else {
+
+                        if rect.isPointInside(antinodeOne) {
+                            antinodes.insert(antinodeOne)
+                        }
+                        if rect.isPointInside(antinodeTwo) {
+                            antinodes.insert(antinodeTwo)
+                        }
+
+                        if !rect.isPointInside(antinodeOne) && !rect.isPointInside(antinodeTwo) {
                             break
                         }
                     }
                 }
             }
         }
-
-        printMap(antnodes: antinodes, size: mapSize)
 
         let result = antinodes.count
 
