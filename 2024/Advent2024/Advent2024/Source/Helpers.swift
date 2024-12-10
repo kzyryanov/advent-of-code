@@ -48,6 +48,8 @@ struct Point: Hashable, CustomStringConvertible {
 enum Direction: String, Hashable, CaseIterable, CustomStringConvertible {
     case upLeft, up, upRight, left, right, downLeft, down, downRight
 
+    static let noDiagonals: [Direction] = [.up, .left, .right, .down]
+
     var description: String { rawValue }
 
     func move(from point: Point) -> Point {
