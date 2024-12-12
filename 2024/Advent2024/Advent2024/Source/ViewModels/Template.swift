@@ -1,34 +1,24 @@
+//import SwiftUI
 //
-//  Template.swift
-//  Advent2024
+//@Observable
+//final class Puzzle<#Number#>ViewModel: PuzzleViewModel {
+//    let puzzle: Puzzle
 //
-//  Created by Konstantin Zyrianov on 2024-12-02.
+//    init(puzzle: Puzzle) {
+//        self.puzzle = puzzle
+//    }
 //
-
-/*
-import SwiftUI
-
-@Observable
-final class Puzzle<#Number#>ViewModel: PuzzleViewModel {
-    let puzzle: Puzzle
-
-    init(puzzle: Puzzle) {
-        self.puzzle = puzzle
-    }
-
-    func solveOne(input: String) async -> String {
-        return ""
-    }
-
-    func solveTwo(input: String) async -> String {
-        return ""
-    }
-
-    func data(from input: String) -> <#DataType#> {
-        let lines = input.lines.filter(\.isNotEmpty)
-
-        return <#Data#>
-    }
-}
-
-*/
+//    func solveOne(input: String) async -> String {
+//        return ""
+//    }
+//
+//    func solveTwo(input: String) async -> String {
+//        return ""
+//    }
+//
+//    func data(from input: String) -> <#DataType#> {
+//        let lines = input.lines.filter(\.isNotEmpty)
+//
+//        return <#Data#>
+//    }
+//}

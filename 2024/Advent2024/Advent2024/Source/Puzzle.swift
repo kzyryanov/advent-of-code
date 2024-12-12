@@ -24,6 +24,7 @@ enum Puzzle: String, CaseIterable {
     case puzzle09
     case puzzle10
     case puzzle11
+    case puzzle12
 
 
     var name: String {
@@ -44,6 +45,11 @@ enum Puzzle: String, CaseIterable {
             testInputs.append(input(name: self.rawValue + "_test1"))
         case .puzzle09:
             testInputs.append(input(name: self.rawValue + "_test1"))
+        case .puzzle12:
+            testInputs.append(input(name: self.rawValue + "_test1"))
+            testInputs.append(input(name: self.rawValue + "_test2"))
+            testInputs.append(input(name: self.rawValue + "_test3"))
+            testInputs.append(input(name: self.rawValue + "_test4"))
         default:
             break
         }
@@ -71,6 +77,7 @@ enum Puzzle: String, CaseIterable {
         case .puzzle09: Puzzle09ViewModel(puzzle: self)
         case .puzzle10: Puzzle10ViewModel(puzzle: self)
         case .puzzle11: Puzzle11ViewModel(puzzle: self)
+        case .puzzle12: Puzzle12ViewModel(puzzle: self)
         }
     }
 }
