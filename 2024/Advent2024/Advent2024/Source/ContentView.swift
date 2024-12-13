@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             List {
-                ForEach(Puzzle.allCases, id: \.self) { puzzle in
+                ForEach(Puzzle.allCases.reversed(), id: \.self) { puzzle in
                     NavigationLink(value: puzzle) {
                         Text(puzzle.name)
                     }
