@@ -18,7 +18,7 @@ final class Puzzle13ViewModel: PuzzleViewModel {
     func solveOne(input: String) async -> String {
         let variations = data(from: input)
 
-        let buttonPresses: [(a: Int, b: Int)] = buttonPresses(from: variations, pressLimit: 100)
+        let buttonPresses: [(a: Int, b: Int)] = buttonPresses(from: variations)
 
         let tokens = buttonPresses.map { $0.a * 3 + $0.b }.reduce(0, +)
 
@@ -28,14 +28,14 @@ final class Puzzle13ViewModel: PuzzleViewModel {
     func solveTwo(input: String) async -> String {
         let variations = data(from: input, prizeOffset: 10_000_000_000_000)
 
-        let buttonPresses: [(a: Int, b: Int)] = buttonPresses(from: variations, pressLimit: nil)
+        let buttonPresses: [(a: Int, b: Int)] = buttonPresses(from: variations)
 
         let tokens = buttonPresses.map { $0.a * 3 + $0.b }.reduce(0, +)
 
         return "\(tokens)"
     }
 
-    private func buttonPresses(from variations: [(x: Coeficient, y: Coeficient)], pressLimit: Int?) -> [(a: Int, b: Int)] {
+    private func buttonPresses(from variations: [(x: Coeficient, y: Coeficient)]) -> [(a: Int, b: Int)] {
         variations.compactMap { variation in
             let b = (variation.x.a * variation.y.prize - variation.y.a * variation.x.prize) / (variation.x.a * variation.y.b - variation.y.a * variation.x.b)
             let a = (variation.x.prize - b * variation.x.b) / variation.x.a
@@ -44,9 +44,6 @@ final class Puzzle13ViewModel: PuzzleViewModel {
             let isCorrectY = (variation.y.a * a + variation.y.b * b == variation.y.prize)
 
             guard isCorrectX && isCorrectY else { return nil }
-            if let pressLimit, a > pressLimit, b > pressLimit {
-                return nil
-            }
             return (a: a, b: b)
         }
     }
