@@ -16,7 +16,7 @@
 //        return ""
 //    }
 //
-//    func data(from input: String) -> <#DataType#> {
+//    private func data(from input: String) -> <#DataType#> {
 //        let lines = input.lines.filter(\.isNotEmpty)
 //
 //        return <#Data#>

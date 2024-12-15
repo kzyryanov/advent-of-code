@@ -12,7 +12,7 @@ extension Collection {
 }
 
 extension StringProtocol {
-    var lines: [SubSequence] { split(whereSeparator: \.isNewline) }
+    var lines: [SubSequence] { split(omittingEmptySubsequences: false, whereSeparator: \.isNewline) }
 }
 
 struct Rect: Hashable, CustomStringConvertible {
