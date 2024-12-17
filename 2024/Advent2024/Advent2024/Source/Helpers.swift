@@ -77,4 +77,21 @@ enum Direction: String, Hashable, CaseIterable, CustomStringConvertible {
         case .left: return .up
         }
     }
+
+    var opposite: Direction {
+        switch self {
+        case .upLeft: return .downRight
+        case .upRight: return .downLeft
+        case .downLeft: return .upRight
+        case .downRight: return .upLeft
+        case .left: return .right
+        case .right: return .left
+        case .up: return .down
+        case .down: return .up
+        }
+    }
+
+    func isOpposite(to direction: Direction) -> Bool {
+        self.opposite == direction
+    }
 }
