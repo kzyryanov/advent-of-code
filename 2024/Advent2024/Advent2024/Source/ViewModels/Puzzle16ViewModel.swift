@@ -236,9 +236,11 @@ final class Puzzle16ViewModel: PuzzleViewModel {
                     print("E", terminator: "")
                 } else if maze[point, default: false] {
                     print("#", terminator: "")
-                } else if nil != nodes[point] {
-                    print("N", terminator: "")
-                } else {
+                } else
+//                if nil != nodes[point] {
+//                    print("N", terminator: "")
+//                } else
+                {
                     print(".", terminator: "")
                 }
             }

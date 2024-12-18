@@ -147,8 +147,6 @@ final class Puzzle15ViewModel: PuzzleViewModel {
             return []
         }
 
-        let countBefore = newMap.filter { $0.value == .boxLeft }.count
-
         for instruction in instructions {
             guard let boxesToMove = boxesToMove(from: robotLocation, in: instruction) else {
                 continue
@@ -172,8 +170,6 @@ final class Puzzle15ViewModel: PuzzleViewModel {
         print()
         print("After")
         printMap(newMap, size: size, robotLocation: robotLocation)
-
-        let countAfter = newMap.filter { $0.value == .boxLeft }.count
 
         let result = newMap
             .filter { $0.value == .boxLeft }
