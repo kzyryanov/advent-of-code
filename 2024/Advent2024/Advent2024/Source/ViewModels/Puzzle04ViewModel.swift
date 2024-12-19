@@ -15,7 +15,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let (map, _) = data(from: input)
 
         let xPoints = map.filter { point, character in
@@ -56,7 +56,7 @@ final class Puzzle04ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let (map, _) = data(from: input)
 
         let aPoints = map.filter { point, character in

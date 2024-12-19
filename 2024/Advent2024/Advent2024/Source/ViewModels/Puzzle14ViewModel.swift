@@ -15,10 +15,15 @@ final class Puzzle14ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let robots = data(from: input)
 
-        let fieldSize = Size(width: 101, height: 103)
+        let fieldSize: Size
+        if isTest {
+            fieldSize = Size(width: 11, height: 7)
+        } else {
+            fieldSize = Size(width: 101, height: 103)
+        }
 
         let seconds = 100
 
@@ -60,10 +65,15 @@ final class Puzzle14ViewModel: PuzzleViewModel {
         return "\(safetyFactor)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let robots = data(from: input)
 
-        let fieldSize = Size(width: 101, height: 103)
+        let fieldSize: Size
+        if isTest {
+            fieldSize = Size(width: 11, height: 7)
+        } else {
+            fieldSize = Size(width: 101, height: 103)
+        }
 
         let seconds = 7687
 

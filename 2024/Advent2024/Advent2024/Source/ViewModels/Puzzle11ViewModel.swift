@@ -15,7 +15,7 @@ final class Puzzle11ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let stones = input
             .split(separator: " ")
             .filter(\.isNotEmpty)
@@ -26,7 +26,7 @@ final class Puzzle11ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let stones = input
             .split(separator: " ")
             .filter(\.isNotEmpty)

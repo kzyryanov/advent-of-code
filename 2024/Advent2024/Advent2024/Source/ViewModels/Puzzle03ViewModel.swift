@@ -15,7 +15,7 @@ final class Puzzle03ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let regex = /mul\((?<one>\d+?),(?<two>\d+?)\)/
 
         let result = input.matches(of: regex)
@@ -30,7 +30,7 @@ final class Puzzle03ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let regex = /mul\((?<one>\d{1,3}?),(?<two>\d{1,3}}?)\)|do\(\)|don't\(\)/
 
         var result: Int = 0

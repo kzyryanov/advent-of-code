@@ -15,7 +15,7 @@ final class Puzzle09ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let diskMap: [Int] = input.trimmingCharacters(in: .whitespacesAndNewlines).enumerated().flatMap { index, character in
             let blocks = character.wholeNumberValue!
             if index % 2 == 0 {
@@ -74,7 +74,7 @@ final class Puzzle09ViewModel: PuzzleViewModel {
         }
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         var head: Node?
         var tail: Node?
 

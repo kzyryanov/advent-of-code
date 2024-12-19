@@ -8,11 +8,11 @@
 //        self.puzzle = puzzle
 //    }
 //
-//    func solveOne(input: String) async -> String {
+//    func solveOne(input: String, isTest: Bool) async -> String {
 //        return ""
 //    }
 //
-//    func solveTwo(input: String) async -> String {
+//    func solveTwo(input: String, isTest: Bool) async -> String {
 //        return ""
 //    }
 //

@@ -10,8 +10,8 @@ import SwiftUI
 protocol PuzzleViewModel: Observable, AnyObject, Sendable {
     var puzzle: Puzzle { get }
 
-    func solveOne(input: String) async -> String
-    func solveTwo(input: String) async -> String
+    func solveOne(input: String, isTest: Bool) async -> String
+    func solveTwo(input: String, isTest: Bool) async -> String
 }
 
 extension PuzzleViewModel {
@@ -19,7 +19,7 @@ extension PuzzleViewModel {
         let clock = ContinuousClock()
         var answer: String!
         let result = await clock.measure {
-            answer = await solveOne(input: puzzle.testInputs[index])
+            answer = await solveOne(input: puzzle.testInputs[index], isTest: true)
         }
         debugPrint("Time \(puzzle.name) test one: \(result)")
 
@@ -30,7 +30,7 @@ extension PuzzleViewModel {
         let clock = ContinuousClock()
         var answer: String!
         let result = await clock.measure {
-            answer = await solveTwo(input: puzzle.testInputs[index])
+            answer = await solveTwo(input: puzzle.testInputs[index], isTest: true)
         }
         debugPrint("Time \(puzzle.name) test two: \(result)")
         return answer
@@ -40,7 +40,7 @@ extension PuzzleViewModel {
         let clock = ContinuousClock()
         var answer: String!
         let result = await clock.measure {
-            answer = await solveOne(input: puzzle.input)
+            answer = await solveOne(input: puzzle.input, isTest: false)
         }
         debugPrint("Time \(puzzle.name) one: \(result)")
         return answer
@@ -50,7 +50,7 @@ extension PuzzleViewModel {
         let clock = ContinuousClock()
         var answer: String!
         let result = await clock.measure {
-            answer = await solveTwo(input: puzzle.input)
+            answer = await solveTwo(input: puzzle.input, isTest: false)
         }
         debugPrint("Time \(puzzle.name) two: \(result)")
         return answer

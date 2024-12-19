@@ -15,7 +15,7 @@ final class Puzzle02ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let reports = data(from: input)
 
         let result = reports.count(where: isReportSafe)
@@ -23,7 +23,7 @@ final class Puzzle02ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let reports = data(from: input)
 
         let result = reports.count { report in

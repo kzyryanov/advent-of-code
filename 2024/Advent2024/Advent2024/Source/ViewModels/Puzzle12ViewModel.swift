@@ -153,7 +153,7 @@ final class Puzzle12ViewModel: PuzzleViewModel {
         return calculatedRegions
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let plants = data(from: input)
 
         let regions = regions(from: plants)
@@ -163,7 +163,7 @@ final class Puzzle12ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let plants = data(from: input)
 
         let regions = regions(from: plants)

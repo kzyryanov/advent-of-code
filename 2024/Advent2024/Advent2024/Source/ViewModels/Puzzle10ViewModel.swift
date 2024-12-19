@@ -15,7 +15,7 @@ final class Puzzle10ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let map = data(from: input)
         let rect = Rect(origin: .zero, size: Size(width: map.first!.count, height: map.count))
 
@@ -58,7 +58,7 @@ final class Puzzle10ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let map = data(from: input)
         let rect = Rect(origin: .zero, size: Size(width: map.first!.count, height: map.count))
 

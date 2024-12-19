@@ -15,7 +15,7 @@ final class Puzzle01ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let (firstList, secondList) = data(from: input)
 
         let sortedFirst = firstList.sorted()
@@ -30,7 +30,7 @@ final class Puzzle01ViewModel: PuzzleViewModel {
         return "\(result)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let (firstList, secondList) = data(from: input)
 
         let groupedSecond = Dictionary(grouping: secondList, by: { $0 }).mapValues(\.count)

@@ -41,7 +41,7 @@ final class Puzzle07ViewModel: PuzzleViewModel {
         return stack.last!
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let data = data(from: input)
 
         let totalCalibrationResult = await withTaskGroup(of: Int.self) { group in
@@ -81,7 +81,7 @@ final class Puzzle07ViewModel: PuzzleViewModel {
         return "\(totalCalibrationResult)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let data = data(from: input)
 
         let totalCalibrationResult = await withTaskGroup(of: Int.self) { group in

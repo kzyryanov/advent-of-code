@@ -15,7 +15,7 @@ final class Puzzle16ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let (maze, start, end) = data(from: input)
 
         var nodes: [Point: Set<Direction>] = [:]
@@ -97,7 +97,7 @@ final class Puzzle16ViewModel: PuzzleViewModel {
         }
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let (maze, start, end) = data(from: input)
 
         var nodes: [Point: Set<Direction>] = [:]

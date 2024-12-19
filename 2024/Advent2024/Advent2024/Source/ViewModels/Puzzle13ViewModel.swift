@@ -15,7 +15,7 @@ final class Puzzle13ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let variations = data(from: input)
 
         let buttonPresses: [(a: Int, b: Int)] = buttonPresses(from: variations)
@@ -25,7 +25,7 @@ final class Puzzle13ViewModel: PuzzleViewModel {
         return "\(tokens)"
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let variations = data(from: input, prizeOffset: 10_000_000_000_000)
 
         let buttonPresses: [(a: Int, b: Int)] = buttonPresses(from: variations)

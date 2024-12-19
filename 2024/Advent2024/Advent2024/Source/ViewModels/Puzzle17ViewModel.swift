@@ -15,7 +15,7 @@ final class Puzzle17ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let computer = data(from: input)
 
         let result = computer.run().map(String.init).joined(separator: ",")
@@ -23,7 +23,7 @@ final class Puzzle17ViewModel: PuzzleViewModel {
         return result
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let computer = data(from: input)
 
         var checked: Set<Int> = []

@@ -15,7 +15,7 @@ final class Puzzle08ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    func solveOne(input: String) async -> String {
+    func solveOne(input: String, isTest: Bool) async -> String {
         let (antennas, mapSize) = data(from: input)
 
         let rect = Rect(origin: .zero, size: mapSize)
@@ -67,7 +67,7 @@ final class Puzzle08ViewModel: PuzzleViewModel {
         }
     }
 
-    func solveTwo(input: String) async -> String {
+    func solveTwo(input: String, isTest: Bool) async -> String {
         let (antennas, mapSize) = data(from: input)
 
         let rect = Rect(origin: .zero, size: mapSize)
