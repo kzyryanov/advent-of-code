@@ -15,35 +15,42 @@ final class Puzzle19ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
 
-    private func possibleDesigns(input: String) -> [String] {
+    private func possibleDesigns(input: String) async -> [String] {
         let (towels, designs) = data(from: input)
 
-        let possibleDesigns = designs.filter { design in
-            var tails: Set<String> = [design]
+        let possibleDesigns = await withTaskGroup(of: (String?).self) { group in
 
-            var checkedSuffixes: Set<String> = []
+            for design in designs {
+                group.addTask {
+                    var tails: Set<String> = [design]
 
-            while tails.isNotEmpty {
-                let tail = tails.removeFirst()
+                    var checkedSuffixes: Set<String> = []
 
-                for towel in towels {
-                    if tail == towel {
-                        return true
-                    }
-                    if tail.hasPrefix(towel) {
-                        let suffix = String(tail.suffix(tail.count - towel.count))
-                        if !checkedSuffixes.contains(suffix) {
-                            tails.insert(suffix)
+                    while tails.isNotEmpty {
+                        let tail = tails.removeFirst()
+
+                        for towel in towels {
+                            if tail == towel {
+                                return design
+                            }
+                            if tail.hasPrefix(towel) {
+                                let suffix = String(tail.suffix(tail.count - towel.count))
+                                if !checkedSuffixes.contains(suffix) {
+                                    tails.insert(suffix)
+                                }
+                                checkedSuffixes.insert(suffix)
+                            }
                         }
-                        checkedSuffixes.insert(suffix)
                     }
+
+                    return nil
                 }
             }
 
-            return false
+            return await group.reduce(into: [], { $0.append($1) })
         }
 
-        return possibleDesigns
+        return possibleDesigns.compactMap { $0 }
     }
 
     private func possibleDesignsCounts(input: String) async -> Int {
@@ -114,7 +121,7 @@ final class Puzzle19ViewModel: PuzzleViewModel {
     }
 
     func solveOne(input: String, isTest: Bool) async -> String {
-        let possibleDesigns = possibleDesigns(input: input)
+        let possibleDesigns = await possibleDesigns(input: input)
 
         return "\(possibleDesigns.count)"
     }
