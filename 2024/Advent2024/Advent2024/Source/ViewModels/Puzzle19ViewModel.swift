@@ -21,6 +21,8 @@ final class Puzzle19ViewModel: PuzzleViewModel {
         let possibleDesigns = designs.filter { design in
             var tails: Set<String> = [design]
 
+            var checkedSuffixes: Set<String> = []
+
             while tails.isNotEmpty {
                 let tail = tails.removeFirst()
 
@@ -30,7 +32,10 @@ final class Puzzle19ViewModel: PuzzleViewModel {
                     }
                     if tail.hasPrefix(towel) {
                         let suffix = String(tail.suffix(tail.count - towel.count))
-                        tails.insert(suffix)
+                        if !checkedSuffixes.contains(suffix) {
+                            tails.insert(suffix)
+                        }
+                        checkedSuffixes.insert(suffix)
                     }
                 }
             }
@@ -63,7 +68,9 @@ final class Puzzle19ViewModel: PuzzleViewModel {
                             }
                             if tail.hasPrefix(towel) {
                                 let suffix = String(tail.suffix(tail.count - towel.count))
-                                tails.insert(suffix)
+                                if tree[suffix] == nil {
+                                    tails.insert(suffix)
+                                }
                                 tree[suffix] = tree[suffix, default: []].union([tail])
                                 reverseTree[tail] = reverseTree[tail, default: []].union([suffix])
                             }
