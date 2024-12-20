@@ -275,9 +275,3 @@ final class Puzzle16ViewModel: PuzzleViewModel {
         return (maze, start, end)
     }
 }
-
-private extension Point {
-    func distance(from point: Point) -> Int {
-        return abs(x - point.x) + abs(y - point.y)
-    }
-}
