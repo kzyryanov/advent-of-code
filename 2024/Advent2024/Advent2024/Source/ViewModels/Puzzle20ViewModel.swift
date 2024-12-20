@@ -74,6 +74,12 @@ final class Puzzle20ViewModel: PuzzleViewModel {
     }
 
     func solveTwo(input: String, isTest: Bool) async -> String {
+        let result = solve(input: input, cheatPower: isTest ? 50 : 100, distanceRange: 2...20)
+
+        return "\(result)"
+    }
+
+    private func solve(input: String, cheatPower: Int, distanceRange: ClosedRange<Int>) -> Int {
         let (map, size, start, end) = data(from: input)
 
         printMap(map, size: size, start: start, end: end)
@@ -110,7 +116,9 @@ final class Puzzle20ViewModel: PuzzleViewModel {
         for (point, cost) in costs {
             let moreCosts = costs.filter { (fPoint, fCost) in
                 let distance = fPoint.distance(from: point)
-                return distance <= 20 && fCost > cost
+                let costDiff = fCost - cost
+                let withinDistance = distanceRange.contains(distance)
+                return withinDistance && distance < costDiff
             }
 
             moreCosts.forEach { (cPoint, cCost) in
@@ -119,9 +127,9 @@ final class Puzzle20ViewModel: PuzzleViewModel {
             }
         }
 
-        let result = cheats.filter { $0.value >= (isTest ? 50 : 100) }
+        let result = cheats.filter { $0.value >= cheatPower }
 
-        return "\(result.count)"
+        return result.count
     }
 
     private struct Cheat: Hashable {
