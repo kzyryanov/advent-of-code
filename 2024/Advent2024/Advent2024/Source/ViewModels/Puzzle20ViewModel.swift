@@ -74,12 +74,12 @@ final class Puzzle20ViewModel: PuzzleViewModel {
     }
 
     func solveTwo(input: String, isTest: Bool) async -> String {
-        let result = solve(input: input, cheatPower: isTest ? 50 : 100, distanceRange: 2...20)
+        let result = await solve(input: input, cheatPower: isTest ? 50 : 100, distanceRange: 2...20)
 
         return "\(result)"
     }
 
-    private func solve(input: String, cheatPower: Int, distanceRange: ClosedRange<Int>) -> Int {
+    private func solve(input: String, cheatPower: Int, distanceRange: ClosedRange<Int>) async -> Int {
         let (map, size, start, end) = data(from: input)
 
         printMap(map, size: size, start: start, end: end)
@@ -111,21 +111,32 @@ final class Puzzle20ViewModel: PuzzleViewModel {
             }
         }
 
-        var cheats: [Cheat: Int] = [:]
+        let costsConst = costs
 
-        for (point, cost) in costs {
-            let moreCosts = costs.filter { (fPoint, fCost) in
-                let distance = fPoint.distance(from: point)
-                let costDiff = fCost - cost
-                let withinDistance = distanceRange.contains(distance)
-                return withinDistance && distance < costDiff
+        let cheats = await withTaskGroup(of: [Cheat: Int].self) { group in
+            for (point, cost) in costsConst {
+                group.addTask {
+                    var result: [(Cheat, Int)] = []
+                    let moreCosts = costsConst.filter { (fPoint, fCost) in
+                        let distance = fPoint.distance(from: point)
+                        let costDiff = fCost - cost
+                        let withinDistance = distanceRange.contains(distance)
+                        return withinDistance && distance < costDiff
+                    }
+
+                    moreCosts.forEach { (cPoint, cCost) in
+                        let distance = cPoint.distance(from: point)
+                        result.append((Cheat(start: point, end: cPoint), (cCost - cost) - distance))
+                    }
+
+                    return Dictionary(uniqueKeysWithValues: result)
+                }
             }
-
-            moreCosts.forEach { (cPoint, cCost) in
-                let distance = cPoint.distance(from: point)
-                cheats[Cheat(start: point, end: cPoint)] = (cCost - cost) - distance
+            return await group.reduce(into: [:]) { (result, task) in
+                result.merge(task, uniquingKeysWith: { current, _ in current })
             }
         }
+
 
         let result = cheats.filter { $0.value >= cheatPower }
 
