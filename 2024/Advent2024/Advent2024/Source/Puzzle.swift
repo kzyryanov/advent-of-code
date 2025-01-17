@@ -35,6 +35,7 @@ enum Puzzle: String, CaseIterable {
     case puzzle20
     case puzzle21
     case puzzle22
+    case puzzle23
 
     var name: String {
         self.rawValue.capitalized
@@ -103,6 +104,7 @@ enum Puzzle: String, CaseIterable {
         case .puzzle20: Puzzle20ViewModel(puzzle: self)
         case .puzzle21: Puzzle21ViewModel(puzzle: self)
         case .puzzle22: Puzzle22ViewModel(puzzle: self)
+        case .puzzle23: Puzzle23ViewModel(puzzle: self)
         }
     }
 }
