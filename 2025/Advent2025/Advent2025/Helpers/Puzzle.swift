@@ -15,7 +15,7 @@ import UIKit
 enum Puzzle: String, CaseIterable {
     case puzzle01
     case puzzle02
-//    case puzzle03
+    case puzzle03
 //    case puzzle04
 //    case puzzle05
 //    case puzzle06
@@ -48,7 +48,7 @@ enum Puzzle: String, CaseIterable {
     }
 
     var testInputs: [String] {
-        var testInputs: [String] = [
+        let testInputs: [String] = [
             input(name: self.rawValue + "_test")
         ]
 
@@ -88,6 +88,7 @@ enum Puzzle: String, CaseIterable {
         switch self {
         case .puzzle01: Puzzle01ViewModel(puzzle: self)
         case .puzzle02: Puzzle02ViewModel(puzzle: self)
+        case .puzzle03: Puzzle03ViewModel(puzzle: self)
 //        case .puzzle03: Puzzle03ViewModel(puzzle: self)
 //        case .puzzle04: Puzzle04ViewModel(puzzle: self)
 //        case .puzzle05: Puzzle05ViewModel(puzzle: self)
