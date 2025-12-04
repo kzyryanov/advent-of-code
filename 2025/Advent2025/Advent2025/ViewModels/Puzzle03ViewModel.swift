@@ -15,19 +15,34 @@ final class Puzzle03ViewModel: PuzzleViewModel {
         self.puzzle = puzzle
     }
     
+    private func solve(banks: [[Int]], batteriesCount: Int) async -> Int {
+        await withTaskGroup(of: Int.self) { group in
+            for bank in banks {
+                group.addTask {
+                    var maxJoltage: Int = 0
+                    
+                    var rest = bank
+                    
+                    for i in 1...batteriesCount {
+                        maxJoltage *= 10
+                        
+                        let prefix = rest.dropLast(batteriesCount-i)
+                        let maxPrefix = prefix.enumerated().max(by: { $0.element < $1.element })!
+                        rest = Array(rest.dropFirst(maxPrefix.offset + 1))
+                        maxJoltage += maxPrefix.element
+                    }
+                    
+                    return maxJoltage
+                }
+            }
+            return await group.reduce(0, +)
+        }
+    }
+    
     func solveOne(input: String, isTest: Bool) async -> String {
         let banks = data(from: input)
         
-        let maxJoltages = banks.map { bank in
-            let prefix = bank.dropLast()
-            let maxPrefix = prefix.enumerated().max(by: { $0.element < $1.element })!
-            let suffix = bank.dropFirst(maxPrefix.offset + 1)
-            let maxSuffix = suffix.max()!
-            
-            return maxPrefix.element * 10 + maxSuffix
-        }
-        
-        let result = maxJoltages.reduce(0, +)
+        let result = await solve(banks: banks, batteriesCount: 2)
         
         return "\(result)"
     }
@@ -35,24 +50,7 @@ final class Puzzle03ViewModel: PuzzleViewModel {
     func solveTwo(input: String, isTest: Bool) async -> String {
         let banks = data(from: input)
         
-        let maxJoltages = banks.map { bank in
-            var maxJoltage: Int = 0
-            
-            var rest = bank
-            
-            for i in 1...12 {
-                maxJoltage *= 10
-                
-                let prefix = rest.dropLast(12-i)
-                let maxPrefix = prefix.enumerated().max(by: { $0.element < $1.element })!
-                rest = Array(rest.dropFirst(maxPrefix.offset + 1))
-                maxJoltage += maxPrefix.element
-            }
-            
-            return maxJoltage
-        }
-        
-        let result = maxJoltages.reduce(0, +)
+        let result = await solve(banks: banks, batteriesCount: 12)
         
         return "\(result)"
     }
