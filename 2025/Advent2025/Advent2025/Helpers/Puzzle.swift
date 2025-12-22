@@ -20,7 +20,7 @@ enum Puzzle: String, CaseIterable {
     case puzzle05
     case puzzle06
     case puzzle07
-//    case puzzle08
+    case puzzle08
 //    case puzzle09
 //    case puzzle10
 //    case puzzle11
@@ -93,7 +93,7 @@ enum Puzzle: String, CaseIterable {
         case .puzzle05: Puzzle05ViewModel(puzzle: self)
         case .puzzle06: Puzzle06ViewModel(puzzle: self)
         case .puzzle07: Puzzle07ViewModel(puzzle: self)
-//        case .puzzle08: Puzzle08ViewModel(puzzle: self)
+        case .puzzle08: Puzzle08ViewModel(puzzle: self)
 //        case .puzzle09: Puzzle09ViewModel(puzzle: self)
 //        case .puzzle10: Puzzle10ViewModel(puzzle: self)
 //        case .puzzle11: Puzzle11ViewModel(puzzle: self)

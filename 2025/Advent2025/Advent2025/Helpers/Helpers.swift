@@ -48,6 +48,21 @@ struct Point: Hashable, CustomStringConvertible {
         return abs(x - point.x) + abs(y - point.y)
     }
 }
+struct Point3: Hashable, CustomStringConvertible {
+    let x: Int
+    let y: Int
+    let z: Int
+    
+    static let zero = Point3(x: 0, y: 0, z: 0)
+    
+    var description: String { "(\(x), \(y), \(z))" }
+    
+    func distanceSquared(from point: Point3) -> Int {
+        (point.x - x) * (point.x - x) +
+        (point.y - y) * (point.y - y) +
+        (point.z - z) * (point.z - z)
+    }
+}
 
 enum Direction: String, Hashable, CaseIterable, CustomStringConvertible {
     case upLeft, up, upRight, left, right, downLeft, down, downRight
